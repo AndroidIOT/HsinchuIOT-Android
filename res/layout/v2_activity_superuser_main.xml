@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_main_bg_superuser"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/view_main_layout_superuser"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <include layout="@layout/v2_superuser_tab_title" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/id_superuser_main_viewpager"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+        </android.support.v4.view.ViewPager>
+
+        <RadioGroup
+            android:id="@+id/main_tab"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/tab_averagevalue"
+                style="@style/main_tab_bottom"
+                android:layout_marginTop="2.0dip"
+                android:checked="true"
+                android:drawableTop="@null"
+                android:text="@string/tab_text_averagevalue" />
+
+            <RadioButton
+                android:id="@+id/tab_realtimevalue"
+                style="@style/main_tab_bottom"
+                android:layout_marginTop="2.0dip"
+                android:drawableTop="@null"
+                android:text="@string/tab_text_realtimevalue" />
+        </RadioGroup>
+    </LinearLayout>
+
+</LinearLayout>

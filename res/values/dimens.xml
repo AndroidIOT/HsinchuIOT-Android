@@ -1,0 +1,17 @@
+<resources>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="margin_top">20dp</dimen>
+    <dimen name="poi_title_size">20sp</dimen>
+    <dimen name="poi_field_size">16sp</dimen>
+    <dimen name="margin_left">15dp</dimen>
+    <dimen name="margin_right">15dp</dimen>
+    <dimen name="form_item_text_size">17dip</dimen>
+     <dimen name="dialog_subtittle_text_size">13dip</dimen>
+	<dimen name="splash_titletext_size">22sp</dimen>
+	<dimen name="splash_titletext2_size">10sp</dimen>
+	<dimen name="splash_titletext_bottompadding">100dp</dimen>
+	<dimen name="splash_titletext2_bottompadding">80dp</dimen>
+	<dimen name="text_padding_left">60dp</dimen>
+</resources>

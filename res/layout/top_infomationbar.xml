@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_main_info_top"
+    android:layout_width="fill_parent"
+    android:layout_height="60dp"
+    android:layout_alignParentTop="true"
+    android:background="@color/title_blue"
+     >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" 
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:gravity="center_vertical|center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="二氧化碳8小時均值: "
+                android:textSize="14sp" 
+                android:textColor="@color/white"/>
+            <TextView
+                android:id="@+id/id_topinfo_tv_timeperiod_8hr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2015/07/08 08:00-16:00"
+                android:textSize="14sp" 
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+      	<LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:gravity="center_vertical|center"
+            android:orientation="horizontal" >
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="溫度濕度1小時均值: "
+                android:textSize="14sp" 
+                android:textColor="@color/white"/>
+			<TextView
+                android:id="@+id/id_topinfo_tv_timeperiod_1hr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2015/07/08 17:00-18:00"
+                android:textSize="14sp" 
+                android:textColor="@color/white"/>
+        </LinearLayout>
+      	    
+    </LinearLayout>
+
+</RelativeLayout>

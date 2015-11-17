@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/superuser_title_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical|center"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:background="@color/grey" >
+
+        <ImageButton
+            android:id="@+id/btn_logoff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_logoff" />
+        <ImageButton
+            android:id="@+id/btn_alarm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_alarm_red" />
+        
+        <TextView 
+            android:id="@+id/superuser_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="2015-10-23 21:30"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <Button 
+            android:id="@+id/btn_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/com_button_grey"
+            android:text="@string/menuitem_sortbylocation"
+            android:textSize="14sp"
+            android:textColor="@drawable/button_text_color" 
+            android:drawableRight="@drawable/button_dropdown"/>
+    </LinearLayout>
+	 <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+</LinearLayout>

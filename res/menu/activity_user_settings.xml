@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/menu_ok"
+        android:icon="@drawable/icon_ok"
+        android:title="@string/action_ok"
+        android:showAsAction="always"
+        android:orderInCategory="2">
+    </item>
+
+</menu>

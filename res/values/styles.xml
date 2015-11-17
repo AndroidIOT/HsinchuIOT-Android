@@ -1,0 +1,204 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:screenOrientation">portrait</item>
+        <item name="android:homeAsUpIndicator">@drawable/btn_pre_white</item>
+        <item name="android:actionBarStyle">@style/my_actionbar_style</item>
+        <item name="android:actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <style name="my_actionbar_style" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/title_blue</item>
+        <item name="android:titleTextStyle">@style/AcBar_titleStyle</item>
+    </style>
+
+    <style name="AcBar_titleStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18.0dip</item>
+    </style>
+
+    <style name="tab_button">
+        <item name="android:textSize">20.0dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:background">@drawable/com_menu_tab</item>
+        <item name="android:layout_width">0.0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">0.70000005dip</item>
+        <item name="android:layout_marginRight">0.70000005dip</item>
+        <item name="android:layout_marginBottom">0dip</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="NoActionbar" parent="@android:style/Theme.Holo.Light.NoActionBar"></style>
+
+    <style name="NoTitle">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.picker" parent="android:Theme.Holo.Light.NoActionBar">
+        <item name="android:editTextColor">@color/red</item>
+        <item name="android:editTextStyle">@style/Widget.EditText.White</item>
+    </style>
+
+    <style name="Widget.EditText.White" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">@color/red</item>
+    </style>
+
+    <style name="main_tab_bottom">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@drawable/button_text_color</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:background">@drawable/button_language_middle</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>
+    <style name="radio_button_left">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@drawable/button_text_color</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">-1dp</item>
+        <item name="android:background">@drawable/button_language_left</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>
+    <style name="radio_button_middle">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@drawable/button_text_color</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">-1dp</item>
+        <item name="android:layout_marginRight">-1dp</item>
+        <item name="android:background">@drawable/button_language_middle</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>
+    <style name="radio_button_right">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@drawable/button_text_color</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">-1dp</item>
+        <item name="android:background">@drawable/button_language_right</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>
+    <style name="status_normal_caption_text">
+        <item name="android:textSize">36dp</item>
+        <item name="android:textColor">#58595B</item>
+        <item name="android:shadowColor">#F3F3F3</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">2.0</item>
+    </style>
+    <style name="status_normal_text">
+        <item name="android:textSize">36dp</item>
+        <item name="android:textColor">#5dbc00</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#FFFFFF</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">0</item>
+        <item name="android:shadowRadius">16.0</item>
+    </style>
+    <style name="status_normal_unit_text">
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">#58595B</item>
+        <item name="android:shadowColor">#F3F3F3</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">2.0</item>
+    </style>
+    
+    <style name="status_worst_unit_text">
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">#959595</item>
+        <item name="android:shadowColor">#F3F3F3</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">2.0</item>
+    </style>
+    <style name="status_worse_text">
+        <item name="android:textSize">36dp</item>
+        <item name="android:textColor">#58595B</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#FFFFFF</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">0</item>
+        <item name="android:shadowRadius">16.0</item>
+    </style>
+    <style name="status_worst_text">
+        <item name="android:textSize">36dp</item>
+        <item name="android:textColor">#F1F1F2</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#FFFFFF</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">0</item>
+        <item name="android:shadowRadius">16.0</item>
+    </style>
+    <style name="status_cold_text">
+        <item name="android:textSize">36dp</item>
+        <item name="android:textColor">#1B75BB</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#FFFFFF</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">0</item>
+        <item name="android:shadowRadius">16.0</item>
+    </style>
+   <style name="status_hot_text">
+        <item name="android:textSize">36dp</item>
+        <item name="android:textColor">#EC1C24</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#FFFFFF</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">0</item>
+        <item name="android:shadowRadius">16.0</item>
+    </style>
+    <style name="status_dry_text">
+        <item name="android:textSize">36dp</item>
+        <item name="android:textColor">#a67c52</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#FFFFFF</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">0</item>
+        <item name="android:shadowRadius">16.0</item>
+    </style>
+    <style name="status_wet_text">
+        <item name="android:textSize">36dp</item>
+        <item name="android:textColor">#5a45c6</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#FFFFFF</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">0</item>
+        <item name="android:shadowRadius">16.0</item>
+    </style>
+</resources>

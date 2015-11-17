@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">新竹IOT</string>
+    <string name="action_settings">&#160;&#160;設&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;定</string>
+    <string name="action_logoff">&#160;&#160;退&#160;&#160;出&#160;&#160;登&#160;&#160;錄&#160;&#160;</string>
+    <string name="action_ok">確定</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_input">請輸入</string>
+    <string name="action_select">請選擇</string>
+    <string name="action_close">關閉</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+	
+	<!-- upgrade -->
+    <string name="common_upgrade_dialog_headline">需要升級</string>
+    <string name="common_upgrade_dialog_message">是否升級至新版本？</string>
+    <string name="common_upgrade_download_over">下載完成</string>		
+    <string name="common_upgrade_download_fail">下載升級文件失敗</string>
+    <!-- error messages -->
+    <string name="common_default_error_name">錯誤</string>
+	<string name="common_default_error_string">回應發生錯誤</string>
+	<string name="common_please_wait">請等待</string>
+	<string name="error_message_require_loginname_text">需要填寫用戶名</string>
+	<string name="error_message_require_pwd_text">需要填寫密碼</string>
+	<string name="error_message_require_code_text">需要填寫驗證碼</string>
+	<string name="error_message_chart_settings_require_duration">需要填寫資料範圍</string>
+	<string name="error_message_chart_settings_invalid_duration">需要填寫合法的資料範圍</string>
+	<string name="error_message_chart_settings_require_starttime">需要填寫開始時間</string>
+	<string name="error_message_chart_settings_require_endtime">需要填寫結束時間</string>
+	<string name="error_message_chart_settings_invalid_starttime">開始時間應早於結束時間</string>
+	<string name="error_message_user_permission_wrong">用戶權限錯誤，禁止登錄</string>
+	<string name="error_message_gcm_register_failed">推送服務註冊失敗，推送服務不可用</string>
+	<!-- login -->
+    <string name="common_login_hint_username">請輸入您的帳號</string>
+    <string name="common_login_hint_password">請輸入您的密碼</string>
+    <string name="common_sign_in">登錄</string>
+    <string name="common_login_signing">正在登錄</string>
+    <string name="common_login_remember_password">記住密碼</string>
+    <string name="common_login_username_hint">用戶名</string>
+    <string name="common_login_password_hint">密碼</string>
+    <string name="common_login_language_en">English</string>
+    <string name="common_login_language_cn">简体中文</string>
+    <string name="common_login_language_tw">繁體中文</string>
+    <string name="common_login_title_1">新竹縣室內空氣品質</string>
+    <string name="common_login_title_2">自主管理系統</string>
+    
+    <!-- signup -->
+    <string name="common_signup">注册</string>
+    <string name="common_send_auth_code">获取验证码</string>
+    <string name="common_title_change_password">修改密码</string>
+
+	<string name="splash_titletext">久在樊籠裡 複得返自然 </string>
+    <string name="splash_titletext2"></string>
+    
+    <!--  main -->
+    <string name="superuser_main_8hrtitle">二氧化碳8小時均值: </string>
+    <string name="superuser_main_1hrtitle">溫度濕度1小時均值: </string>
+    
+    <string name="co2">二氧化碳</string>
+    <string name="temperature">溫度</string>
+    <string name="humidity">濕度</string>
+    
+    
+    <string name="pull_to_refresh_pull_label">下拉刷新</string>
+    <string name="pull_to_refresh_release_label">鬆開後刷新</string>
+    <string name="pull_to_refresh_refreshing_label">刷新...</string>
+    <string name="pull_to_refresh_tap_label">Tap to refresh...</string>
+    
+    <string name="chart_settings">圖表設置</string>
+    <!-- main v2 -->
+    <string name="tab_text_averagevalue">法定均值</string>
+    <string name="tab_text_realtimevalue">即時數值</string>
+    <string name="menuitem_sortbystatus">按狀態排序</string>
+    <string name="menuitem_sortbyco2">按二氧化碳排序</string>
+    <string name="menuitem_sortbytemperature">按溫度排序</string>
+    <string name="menuitem_sortbyhumidity">按濕度排序</string>
+    <string name="menuitem_sortbylocation">按場所名稱排序</string>
+    
+    <string name="superuser_listheader_status">狀態</string>
+    <string name="superuser_listheader_location">場所</string>
+    <string name="superuser_listheader_co2">二氧化碳(ppm)</string>
+    <string name="superuser_listheader_temperature">溫度(℃)</string>
+    <string name="superuser_listheader_humidity">濕度(%)</string>
+    <string name="chart_interval_current">當前</string>
+    <string name="chart_interval_realtime">即時</string>
+    <string name="chart_interval_byquarter">刻</string>
+    <string name="chart_interval_byhour">小時</string>
+    <string name="chart_interval_by8hours">8小時</string>
+    <string name="chart_interval_byday">日</string>
+    <string name="chart_interval_byweek">周</string>
+    <string name="chart_interval_bymonth">月</string>
+    
+    <string name="chart_settimescope">設置時間範圍</string>
+     <string name="chart_timescope_from">從</string>
+     <string name="chart_timescope_to">到</string>
+     
+     <string name="chart_time_scope_1hour">壹小時</string>
+     <string name="chart_time_scope_4hours">四小時</string>
+     <string name="chart_time_scope_8hours">八小時</string>
+     <string name="chart_time_scope_today">今天</string>
+     <string name="chart_time_scope_yesterday">昨天</string>
+     <string name="chart_time_scope_last3days">前三天</string>
+     <string name="chart_time_scope_last5days">前五天</string>
+     <string name="chart_time_scope_thisweek">本周</string>
+     <string name="chart_time_scope_lastweek">上周</string>
+     <string name="chart_time_scope_last2weeks">前兩周</string>
+     <string name="chart_time_scope_last3weeks">前三周</string>
+     <string name="chart_time_scope_thismonth">本月</string>
+     <string name="chart_time_scope_lastmonth">上月</string>
+     <string name="chart_time_scope_last2months">前兩月</string>
+     <string name="chart_time_scope_last3months">前三月</string>
+     <string name="chart_waiting">正在獲取數據...</string>
+     <string name="alarm_title">告警</string>
+     
+     <string name="label_co2">二氧化碳:</string>
+    <string name="label_temperature">溫度:</string>
+    <string name="label_humidity">濕度:</string>
+    <string name="dlg_title_systemprompt">系統提示</string>
+    <string name="dlg_caption_deletealarm">妳確定要刪除該告警信息嗎？</string>
+    <string name="dlg_caption_deleteallalarms">妳確定要刪除全部告警信息嗎？</string>
+    <string name="dlg_caption_exit">妳確定要要退出嗎？</string>
+</resources>

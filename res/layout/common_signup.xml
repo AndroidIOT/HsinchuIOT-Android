@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_revise" />
+        <LinearLayout style="@style/Form.Item.Layout" >
+
+            <TextView
+                style="@style/Form.Item.ImageView"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/bg_revise_phone" />
+
+
+            <EditText
+                android:id="@+id/signup_phone_number"
+                style="@style/Form.Item.Edit"
+                android:layout_marginRight="20dp"
+                android:inputType="phone"
+                android:hint="输入手机号码" />
+        </LinearLayout>
+        <TextView
+            style="@style/FillForm.Item.DividerHorizontalGray"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp" />
+        <LinearLayout style="@style/Form.Item.Layout" >
+
+            <TextView
+                style="@style/Form.Item.ImageView"
+                android:background="@drawable/bg_revise_code" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/signup_auth_code"
+                    style="@style/Form.Item.Edit"
+                    android:inputType="phone"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:hint="验证码"  />
+
+                <com.nnit.meadow.widget.AuthCodeButton
+                    android:id="@+id/signup_retrieve_auth_code_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dip"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="20dp"
+                    android:background="#ce6e94"
+                    android:paddingLeft="5dip"
+                    android:paddingRight="5dip"
+                    android:text="@string/common_send_auth_code"
+                    android:textColor="@color/white" >
+                </com.nnit.meadow.widget.AuthCodeButton>
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            style="@style/FillForm.Item.DividerHorizontalGray"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp" />
+ </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/signup_button"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="30dp"
+            android:background="@drawable/com_button_blue"
+            android:text="下一步"
+            android:textColor="@color/white" >
+        </Button>
+    </RelativeLayout>
+
+</FrameLayout>

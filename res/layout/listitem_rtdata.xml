@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="left|center_vertical"
+    android:orientation="vertical"
+    android:paddingBottom="5dp"
+    android:paddingLeft="10dp"
+    android:paddingTop="5dp" >
+
+    <TextView
+        android:id="@+id/li_tv_sitename"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="国立台湾大学医学院附设医院竹东分院"
+        android:textColor="@color/black"
+        android:textSize="15dip" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp" 
+            android:layout_weight="3">
+
+            <ImageView
+                android:id="@+id/li_icon_co2"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:background="@drawable/breach" />
+
+            <TextView
+                android:id="@+id/li_tv_co2name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="2dp"
+                android:text="二氧化碳:"
+                android:textColor="@color/dark_gray"
+                android:textSize="10dip" />
+            <TextView
+                android:id="@+id/li_tv_co2value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               	android:gravity="right"
+                android:text="1623"
+                android:textColor="@color/dark_gray"
+                android:textSize="10dip" />
+            <TextView
+                android:id="@+id/li_tv_co2unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="2dp"
+                android:text="ppm"
+                android:textColor="@color/dark_gray"
+                android:textSize="10dip" />
+        </LinearLayout>
+
+         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp" 
+            android:layout_weight="2">
+
+            <ImageView
+                android:id="@+id/li_icon_temperature"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:background="@drawable/breach" />
+
+            <TextView
+                android:id="@+id/li_tv_temperaturename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="2dp"
+                android:text="温度:"
+                android:textColor="@color/dark_gray"
+                android:textSize="10dip" />
+            <TextView
+                android:id="@+id/li_tv_temperaturevalue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               	android:gravity="right"
+                android:text="32"
+                android:textColor="@color/dark_gray"
+                android:textSize="10dip" />
+            <TextView
+                android:id="@+id/li_tv_temperatureunit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="2dp"
+                android:text="℃"
+                android:textColor="@color/dark_gray"
+                android:textSize="10dip" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp" 
+            android:layout_weight="2" >
+
+            <ImageView
+                android:id="@+id/li_icon_humidity"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:background="@drawable/warning" />
+
+            <TextView
+                android:id="@+id/li_tv_humidityname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="2dp"
+                android:text="湿度:"
+                android:textColor="@color/dark_gray"
+                android:textSize="10dip" />
+            <TextView
+                android:id="@+id/li_tv_humidityvalue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               	android:gravity="right"
+                android:text="70"
+                android:textColor="@color/dark_gray"
+                android:textSize="10dip" />
+            <TextView
+                android:id="@+id/li_tv_humidityunit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="2dp"
+                android:text="%"
+                android:textColor="@color/dark_gray"
+                android:textSize="10dip" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

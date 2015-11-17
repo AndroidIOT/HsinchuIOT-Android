@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent"> #00000000</color>
+    <color name="grey"> #ebebeb</color>
+    <color name="black"> #000000</color>
+    <color name="yellow"> #FFFF00</color>
+    <color name="darkgrey"> #434343</color>
+    <color name="white"> #FFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="orange">#FEB016</color>
+    <color name="common_blue"> #0092ce </color>
+    <color name="common_blue_light"> #49BCEB  </color>
+    <color name="common_green">#008000</color>
+
+    <drawable name="drawable_light_blue">#87c5d2</drawable>
+    <drawable name="drawable_white">#FFFFFF</drawable>
+    <drawable name="drawable_transparent">#00000000</drawable>
+
+    <color name="title_blue"> #448ccb </color>
+    <color name="text_blue"> #448ccb </color>
+    <color name="title_green"> #04bb45 </color>
+    <color name="text_green"> #62f412 </color>
+    <color name="common_orange"> #fc5f28 </color>
+    <color name="common_pink">#ce6e94</color>
+    <color name="common_orange_hilight">#de4f02</color>
+    <color name="common_grey">#989899</color>
+    <color name="common_grey_hilight">#777778</color>
+    <color name="light_blue"> #87c5d2 </color>
+    <color name="light_blue_hilight"> #ccf5ff </color>
+    <color name="light_green">#008000</color>
+    <color name="dark_gray">#707070</color>
+    <color name="bg_gray">#F2F2F2</color>
+    <color name="bg_blue">#DAE8EB</color>
+    <color name="text_color_gray_1">#666</color>
+    <color name="text_color_gray_2">#999</color>
+    <color name="title_bk_green">#4fcb44</color>
+    <color name="title_bk_brown">#AA7942</color>
+    <color name="title_bk_purple">#8739d5</color>
+    <color name="status_ok">#00ff00</color>
+	<color name="status_warning">#fcae00</color>
+    <color name="status_alarm">#ff0000</color>
+    <color name="status_icon_ok">#00a651</color>
+	<color name="status_icon_warning">#ffcc00</color>
+    <color name="status_icon_alarm">#ff0000</color>
+    <color name="status_icon_missing">#F2F2F2</color>
+    <color name="curtainmenu_bg">#F74AC6DC</color>
+    <color name="chart_color_co2">#448CCB</color>
+    <color name="chart_color_temperature">#F8941D</color>
+    <color name="chart_color_humidity">#7CC576</color>
+
+</resources>

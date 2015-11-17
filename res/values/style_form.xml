@@ -1,0 +1,172 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="Form">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">10dip</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="Form.Item"></style>
+
+    <style name="Form.Item.Config">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dip</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginBottom">5dip</item>
+        <item name="android:padding">3dip</item>
+        <item name="android:background">@drawable/com_text_border</item>
+    </style>
+    
+     <style name="Form.Item.Layout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">10dip</item>
+        <item name="android:background">@color/white</item>
+
+    </style>
+
+    <style name="Form.Item.Divider">
+        <item name="android:layout_width">1dip</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">5dip</item>
+        <item name="android:layout_marginRight">5dip</item>
+        <item name="android:background">@color/dark_gray</item>
+    </style>
+
+    <style name="Form.Item.TextView">
+        <item name="android:layout_width">80dip</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textSize">@dimen/form_item_text_size</item>
+    </style>
+    
+        <style name="Form.Item.ImageView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">left|center_vertical</item>
+         <item name="android:layout_marginLeft">20dip</item>
+         <item name="android:layout_marginRight">20dip</item>
+        
+    </style>
+
+    <style name="Form.Item.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textSize">@dimen/form_item_text_size</item>
+    </style>
+        <style name="Form.Item.Edit">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/edit_text_bg</item>
+        <item name="android:textSize">@dimen/form_item_text_size</item>
+    </style>
+
+    <style name="FillForm">
+        <item name="android:padding">0dip</item>
+    </style>
+
+    <style name="FillForm.Item"></style>
+
+    <style name="FillForm.Item.Config">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dip</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginBottom">0dip</item>
+        <item name="android:padding">8dip</item>
+    </style>
+    
+     <style name="FillForm.Item.SmallConfig">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">38dip</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginBottom">0dip</item>
+         <item name="android:padding">10dip</item>
+    </style>
+    
+    
+    <style name="FillForm.Item.WrapConfig">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginBottom">0dip</item>
+        <item name="android:padding">8dip</item>
+    </style>
+
+    <style name="FillForm.Item.SplitDivider">
+        <item name="android:layout_width">1px</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">5dip</item>
+        <item name="android:layout_marginRight">5dip</item>
+        <item name="android:background">@color/dark_gray</item>
+    </style>
+
+    <style name="FillForm.Item.DividerHorizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dip</item>
+        <item name="android:background">#EAE8E8</item>
+    </style>
+    
+    <style name="FillForm.Item.DividerHorizontalBlue">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dip</item>
+        <item name="android:background">@color/light_blue</item>
+    </style>
+    
+    
+      <style name="FillForm.Item.DividerHorizontalGray">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dip</item>
+        <item name="android:background">#EAE8E8</item>
+    </style>
+            <style name="FillForm.Item.DoubleDividerHorizontalGray">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">3dip</item>
+        <item name="android:background">#EAE8E8</item>
+    </style>
+    <style name="FillForm.Item.BlueDividerHorizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dip</item>
+        <item name="android:background">@color/common_blue</item>
+    </style>
+        <style name="FillForm.Item.BlueDividerVertical">
+        <item name="android:layout_width">1dip</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/common_blue</item>
+    </style>
+
+    <style name="FillForm.Item.TextView">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textSize">@dimen/form_item_text_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/text_color_gray_1</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    
+     <style name="FillForm.Item.TextView.Right" parent="FillForm.Item.TextView">
+ <item name="android:textColor">@color/text_color_gray_2</item>
+    </style>
+    
+    
+    <style name="FillForm.Item.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textSize">@dimen/form_item_text_size</item>
+    </style>
+
+</resources>

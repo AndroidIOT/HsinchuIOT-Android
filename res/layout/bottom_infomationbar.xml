@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_main_info_bottom"
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:layout_alignParentBottom="true"
+     >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" 
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/warning"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text="告警： 二氧化碳&gt;800ppm; 温度&gt;27℃; 温度&lt;16℃ "
+                android:textSize="12dip" />
+
+        </LinearLayout>
+      	<LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/breach"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="超标： 二氧化碳&gt;1000ppm; 温度&gt;28℃; 温度&lt;15℃ "
+                android:paddingLeft="5dp"
+                android:textSize="12dip" />
+
+        </LinearLayout>
+      	    
+    </LinearLayout>
+
+</RelativeLayout>

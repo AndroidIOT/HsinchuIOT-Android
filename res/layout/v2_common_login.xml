@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg_v2"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/login_username"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/com_bg_edittext"
+        android:singleLine="true"
+        android:imeOptions="flagNoExtractUi"
+        android:hint="@string/common_login_username_hint"
+       	android:textSize="14sp"
+        android:maxLength="16" 
+        android:padding="5dp"/>
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/login_username"
+        android:background="@drawable/com_bg_edittext"
+        android:singleLine="true"
+        android:imeOptions="flagNoExtractUi"
+        android:inputType="textPassword"
+        android:hint="@string/common_login_password_hint"
+        android:textSize="14sp"
+        android:maxLength="16"
+        android:padding="5dp"
+         />
+
+    <CheckBox
+        android:id="@+id/remeber_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_toRightOf="@+id/login_password"
+        android:layout_alignBottom="@+id/login_password"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:button="@drawable/com_checkbox"
+        android:checked="true"
+        android:text="@string/common_login_remember_password"
+        android:textSize="14sp" />
+
+     <Button
+         android:id="@+id/login_signin"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="10dp"
+         android:layout_marginLeft="10dp"
+         android:layout_toRightOf="@+id/remeber_password"
+          android:layout_alignBaseline="@+id/login_password"
+         android:background="@drawable/com_button_white"
+         android:text="@string/common_sign_in"
+         android:textSize="14sp"
+         android:padding="5dp" />
+
+     
+
+     <View 
+         android:id="@+id/v1"
+         android:layout_width="1dp"
+         android:layout_height="1dp"
+         android:layout_alignParentBottom="true" />
+
+     <ToggleButton
+         android:id="@+id/language_tw_btn"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_above="@+id/v1"
+         android:layout_alignLeft="@+id/v1"
+         android:layout_marginBottom="10dp"
+         android:layout_marginLeft="10dp"
+         android:layout_marginRight="-2dp"
+         android:background="@drawable/button_language_left"
+         android:padding="5dp"
+         android:textOff="@string/common_login_language_tw"
+         android:textOn="@string/common_login_language_tw"
+         android:textColor="@drawable/button_text_color"
+         android:textSize="14sp"
+         android:checked="true" />
+
+ 	<ToggleButton
+         android:id="@+id/language_cn_btn"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_toRightOf="@+id/language_tw_btn"
+         android:layout_above="@+id/v1"
+         android:layout_marginBottom="10dp"
+         android:background="@drawable/button_language_middle"
+         android:padding="5dp"
+         android:textOff="@string/common_login_language_cn"
+         android:textOn="@string/common_login_language_cn"
+         android:textColor="@drawable/button_text_color"
+         android:textSize="14sp" />
+ 	<ToggleButton
+         android:id="@+id/language_en_btn"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_toRightOf="@+id/language_cn_btn"
+         android:layout_above="@+id/v1"
+         android:layout_marginBottom="10dp"
+         android:layout_marginLeft="-2dp"
+         android:layout_marginRight="10dp"
+         android:background="@drawable/button_language_right"
+         android:padding="5dp"
+         android:textOff="@string/common_login_language_en"
+         android:textOn="@string/common_login_language_en"
+         android:textColor="@drawable/button_text_color"
+         android:textSize="14sp" />
+ 	<TextView
+         android:id="@+id/title_2"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/v1"
+         android:layout_above="@+id/language_tw_btn"
+         android:layout_marginLeft="10dp"
+         android:layout_marginBottom="20dp"
+         android:text="@string/common_login_title_2"
+         android:textColor="@color/text_blue"
+         android:textSize="25sp" />
+ 	<TextView
+         android:id="@+id/title_1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignLeft="@+id/v1"
+         android:layout_above="@+id/title_2"
+         android:layout_marginLeft="10dp"
+         android:text="@string/common_login_title_1"
+         android:textColor="@color/text_blue"
+         android:textSize="25sp" />"
+
+</RelativeLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="left|center_vertical"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/li_iv_alarmtype"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/alarm_type_icon_breached"
+        android:scaleType="centerCrop"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/li_tv_alarmtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="2015-11-10 02:03:30"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/li_tv_alarmsite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/li_tv_alarmvaluetype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/co2"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/li_tv_alarmvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="1087ppm"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:visibility="visible" />
+
+    <ImageButton
+        android:id="@+id/li_ib_delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_delete"
+        android:visibility="visible" />
+
+</LinearLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/view_login_bg"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/login_bg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dip"
+        android:layout_marginTop="30dip"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        
+        
+         >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:src="@drawable/logo"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:layout_width="fill_parent" android:gravity="center_vertical"
+            android:layout_height="wrap_content" android:layout_marginTop="40dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/app_name" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dip"
+            android:layout_marginRight="30dip"
+            
+            android:orientation="vertical"
+            android:paddingTop="30dip" >
+
+            <EditText
+                android:id="@+id/login_username"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:drawableLeft="@drawable/icon_login_user"
+                android:drawablePadding="10dip"
+                android:hint="@string/common_login_hint_username"
+                android:padding="5dp"
+                android:textColor="@color/title_blue"
+                android:textColorHint="@color/title_blue"
+                android:textCursorDrawable="@null" >
+            </EditText>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dip"
+            android:background="@color/common_blue" />
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp" />
+
+            <EditText
+                android:id="@+id/login_password"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon_login_password"
+                android:drawablePadding="10dip"
+                android:background="@null"
+                android:hint="@string/common_login_hint_password"
+                android:inputType="textPassword"
+                android:padding="5dp"
+                android:textColor="@color/title_blue"
+                android:textColorHint="@color/title_blue"
+               
+                />
+
+<View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dip"
+            android:background="@color/common_blue" />
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+				<CheckBox 
+				    android:id="@+id/remeber_password"
+				    android:layout_width="wrap_content" 
+				    android:layout_height="wrap_content"
+				    android:checked="true"
+				    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+				    android:text="@string/common_login_remember_password"
+				    android:textColor="@drawable/com_link_text"
+				    android:textSize="15sp"
+				    android:button="@drawable/com_checkbox" />
+                
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/login_signin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_marginLeft="30dip"
+            android:layout_marginRight="30dip"
+            android:layout_marginTop="25dp"
+            android:layout_weight="1.0"
+            android:background="@drawable/com_button_blue"
+            android:text="@string/common_sign_in"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</FrameLayout>

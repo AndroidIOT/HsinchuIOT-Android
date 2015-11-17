@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            style="@style/Form.Item.Layout"
+            android:layout_marginTop="10dip" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="個人偏好設定"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout style="@style/Form.Item.Layout" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:text="@string/common_login_remember_password" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1px"
+                android:layout_weight="1" />
+			<Switch
+                android:id="@+id/sw_settings_remember_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:textOff="@string/no"
+                android:textOn="@string/yes" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout
+            style="@style/Form.Item.Layout"
+            android:layout_marginTop="10dip" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="警告門限值設定"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout style="@style/Form.Item.Layout" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:text="二氧化碳下限" />
+
+            <EditText
+                android:id="@+id/et_settings_co2_lowervalue_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="請輸入"
+                android:singleLine="true"
+                android:textColor="@color/text_color_gray_2" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout style="@style/Form.Item.Layout" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:text="二氧化碳上限" />
+
+            <EditText
+                android:id="@+id/et_settings_co2_uppervalue_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="請輸入"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout style="@style/Form.Item.Layout" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:text="溫度下限" />
+
+            <EditText
+                android:id="@+id/et_settings_temperature_lowervalue_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="請輸入"
+                android:singleLine="true"
+                android:textColor="@color/text_color_gray_2" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout style="@style/Form.Item.Layout" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:text="溫度上限" />
+
+            <EditText
+                android:id="@+id/et_settings_temperature_uppervalue_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="請輸入"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout style="@style/Form.Item.Layout" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:text="濕度下限" />
+
+            <EditText
+                android:id="@+id/et_settings_humidity_lowervalue_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="請輸入"
+                android:singleLine="true"
+                android:textColor="@color/text_color_gray_2" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout
+            style="@style/Form.Item.Layout"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:text="濕度上限" />
+
+            <EditText
+                android:id="@+id/et_settings_humidity_uppervalue_warning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="請輸入"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout
+            style="@style/Form.Item.Layout"
+            android:layout_marginTop="10dip" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="超標門限值設定"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout style="@style/Form.Item.Layout" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:text="二氧化碳下限" />
+
+            <EditText
+                android:id="@+id/et_settings_co2_lowervalue_breach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="請輸入"
+                android:singleLine="true"
+                android:textColor="@color/text_color_gray_2" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout style="@style/Form.Item.Layout" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:text="二氧化碳上限" />
+
+            <EditText
+                android:id="@+id/et_settings_co2_uppervalue_breach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="請輸入"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout style="@style/Form.Item.Layout" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:text="溫度下限" />
+
+            <EditText
+                android:id="@+id/et_settings_temperature_lowervalue_breach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="請輸入"
+                android:singleLine="true"
+                android:textColor="@color/text_color_gray_2" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout style="@style/Form.Item.Layout" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:text="溫度上限" />
+
+            <EditText
+                android:id="@+id/et_settings_temperature_uppervalue_breach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="請輸入"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout style="@style/Form.Item.Layout" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:text="濕度下限" />
+
+            <EditText
+                android:id="@+id/et_settings_humidity_lowervalue_breach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="請輸入"
+                android:singleLine="true"
+                android:textColor="@color/text_color_gray_2" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <LinearLayout style="@style/Form.Item.Layout" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:text="濕度上限" />
+
+            <EditText
+                android:id="@+id/et_settings_humidity_uppervalue_breach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="right"
+                android:hint="請輸入"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+    </LinearLayout>
+
+</ScrollView>

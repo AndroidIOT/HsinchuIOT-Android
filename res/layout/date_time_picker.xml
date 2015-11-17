@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    xmlns:tools="http://schemas.android.com/tools"  
+    android:layout_width="wrap_content"  
+    android:layout_height="wrap_content"  
+    android:gravity="center" 
+    android:orientation="vertical" >  
+  
+  <TextView 
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="left"
+      android:paddingTop="10dp"
+      android:paddingLeft="15dp"
+      android:paddingBottom="10dp"
+      android:text="請選擇日期"
+      android:textSize="16dp"
+      android:textColor="@color/dark_gray"/>
+    <DatePicker  
+        android:id="@+id/date_picker"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:calendarViewShown="false" />  
+  <TextView 
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="left"
+      android:paddingTop="10dp"
+      android:paddingLeft="15dp"
+      android:paddingBottom="10dp"
+      android:text="請選擇時間"
+      android:textSize="16dp"
+      android:textColor="@color/dark_gray"/>
+    <TimePicker   
+        android:id="@+id/time_picker"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"/>  
+  
+</LinearLayout>  

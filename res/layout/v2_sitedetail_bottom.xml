@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal" >
+
+    <RadioGroup
+        android:id="@+id/interval_btn_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/interval_btn_realtime"
+            style="@style/radio_button_left"
+            android:checked="true"
+            android:text="@string/chart_interval_realtime" />
+		<RadioButton
+            android:id="@+id/interval_btn_current"
+            style="@style/radio_button_middle"
+            android:text="@string/chart_interval_current" />
+		<RadioButton
+            android:id="@+id/interval_btn_byquarter"
+            style="@style/radio_button_middle"
+            android:text="@string/chart_interval_byquarter" />
+        <RadioButton
+            android:id="@+id/interval_btn_byhour"
+            style="@style/radio_button_middle"
+            android:text="@string/chart_interval_byhour" />
+        <RadioButton
+            android:id="@+id/interval_btn_by8hours"
+            style="@style/radio_button_middle"
+            android:text="@string/chart_interval_by8hours" />
+
+        <RadioButton
+            android:id="@+id/interval_btn_byday"
+            style="@style/radio_button_middle"
+            android:text="@string/chart_interval_byday" />
+
+        <RadioButton
+            android:id="@+id/interval_btn_byweek"
+            style="@style/radio_button_middle"
+            android:text="@string/chart_interval_byweek" />
+
+        <RadioButton
+            android:id="@+id/interval_btn_bymonth"
+            style="@style/radio_button_right"
+            android:text="@string/chart_interval_bymonth" />
+    </RadioGroup>
+</LinearLayout>

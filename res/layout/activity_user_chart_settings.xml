@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            style="@style/Form.Item.Layout"
+            android:layout_marginTop="10dip" >
+
+            <TextView
+                style="@style/FillForm.Item.TextView"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:text="圖表類型"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:id="@+id/layout_chartsettings_type"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/tv_chartsettings_type"
+                    style="@style/FillForm.Item.TextView.Right"
+                    android:layout_width="wrap_content"
+                    android:text="@string/action_select" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dip"
+                    android:src="@drawable/btn_next" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="@drawable/divider_horizontal" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:id="@+id/layout_chartsettings_rtchart_parameter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:orientation="vertical" >
+
+                <LinearLayout style="@style/Form.Item.Layout" 
+                    android:focusable="true"
+                	android:focusableInTouchMode="true">
+
+                    <TextView
+                        style="@style/FillForm.Item.TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:text="資料範圍"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/et_chartsettings_rtchart_duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:gravity="right"
+                        android:hint="@string/action_input"
+                        android:inputType="numberDecimal"
+                        android:singleLine="true"
+                        android:textSize="@dimen/form_item_text_size" />
+
+                    <TextView
+                        style="@style/FillForm.Item.TextView.Right"
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="20dip"
+                        android:text="分鐘" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@drawable/divider_horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_chartsettings_aggrchart_parameter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:orientation="vertical" >
+
+                <LinearLayout style="@style/Form.Item.Layout" >
+
+                    <TextView
+                        style="@style/FillForm.Item.TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:text="統計單位"
+                        android:textColor="@color/black" />
+
+                    <LinearLayout
+                        android:id="@+id/layout_chartsettings_aggrchart_granularity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" >
+
+                        <TextView
+                            android:id="@+id/tv_chartsettings_aggrchart_granularity"
+                            style="@style/FillForm.Item.TextView.Right"
+                            android:layout_width="wrap_content"
+                            android:text="@string/action_select" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dip"
+                            android:src="@drawable/btn_next" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@drawable/divider_horizontal" />
+
+                <LinearLayout
+                    android:id="@+id/layout_chartsettings_aggrchart_timeperiod"
+                    style="@style/Form.Item.Layout" >
+
+                    <TextView
+                        style="@style/FillForm.Item.TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:text="統計週期"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        style="@style/FillForm.Item.TextView.Right"
+                        android:layout_width="wrap_content"
+                        android:text="預定義週期" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dip"
+                        android:src="@drawable/btn_next" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@drawable/divider_horizontal" />
+
+                <LinearLayout style="@style/Form.Item.Layout" >
+
+                    <View
+                        android:layout_width="20dp"
+                        android:layout_height="1dip" />
+
+                    <TextView
+                        style="@style/FillForm.Item.TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:text="開始時間" />
+
+                    <LinearLayout
+                        android:id="@+id/layout_chartsettings_aggrchart_starttime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" >
+
+                        <TextView
+                            android:id="@+id/tv_chartsettings_aggrchart_starttime"
+                            style="@style/FillForm.Item.TextView.Right"
+                            android:layout_width="wrap_content"
+                            android:text="@string/action_select" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dip"
+                            android:src="@drawable/btn_next" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@drawable/divider_horizontal" />
+
+                <LinearLayout style="@style/Form.Item.Layout" >
+
+                    <View
+                        android:layout_width="20dp"
+                        android:layout_height="1dip" />
+
+                    <TextView
+                        style="@style/FillForm.Item.TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="30dp"
+                        android:text="結束時間" />
+
+                    <LinearLayout
+                        android:id="@+id/layout_chartsettings_aggrchart_endtime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" >
+
+                        <TextView
+                            android:id="@+id/tv_chartsettings_aggrchart_endtime"
+                            style="@style/FillForm.Item.TextView.Right"
+                            android:layout_width="wrap_content"
+                            android:text="@string/action_select" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dip"
+                            android:src="@drawable/btn_next" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:background="@drawable/divider_horizontal" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

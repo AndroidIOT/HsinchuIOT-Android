@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/chart_settimescope"
+            android:textSize="15sp" />
+
+        <ImageButton
+            android:id="@+id/btn_chart_timescope2_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_close" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <org.slstudio.hsinchuiot.ui.AutoFitLayout 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_1hour"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="@string/chart_time_scope_1hour"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_4hours"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:text="@string/chart_time_scope_4hours"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_8hours"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:text="@string/chart_time_scope_8hours"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_today"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:text="@string/chart_time_scope_today"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_yesterday"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:text="@string/chart_time_scope_yesterday"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_last3days"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:text="@string/chart_time_scope_last3days"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_last5days"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:text="@string/chart_time_scope_last5days"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_thisweek"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:text="@string/chart_time_scope_thisweek"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_lastweek"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:text="@string/chart_time_scope_lastweek"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_last2weeks"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:text="@string/chart_time_scope_last2weeks"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_last3weeks"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:text="@string/chart_time_scope_last3weeks"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_thismonth"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:text="@string/chart_time_scope_thismonth"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_lastmonth"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:text="@string/chart_time_scope_lastmonth"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_last2months"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:text="@string/chart_time_scope_last2months"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_chart_timescope2_last3months"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_margin="5dp"
+                android:text="@string/chart_time_scope_last3months"
+                android:textSize="12sp" />
+        </org.slstudio.hsinchuiot.ui.AutoFitLayout>
+    </LinearLayout>
+
+</LinearLayout>

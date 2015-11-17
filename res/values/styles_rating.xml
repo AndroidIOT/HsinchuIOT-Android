@@ -1,0 +1,20 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="RatingBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/com_rating_bar</item>
+        <item name="android:indeterminateDrawable">@drawable/com_rating_bar</item>
+        <item name="android:thumb">@null</item>
+        <item name="android:isIndicator">true</item>
+    </style>
+    
+    <style name="taskRatingBar" parent="RatingBar">
+        <item name="android:minHeight">16dip</item>  
+        <item name="android:maxHeight">16dip</item>
+    </style>
+ <!--   <style name="taskRatingBarSelected" parent="android:Widget.RatingBar.Small">
+        <item name="android:progressDrawable">@drawable/rating_bar_selected</item>  
+        <item name="android:minHeight">14dip</item>  
+        <item name="android:maxHeight">14dip</item>
+    </style>  -->
+
+</resources>

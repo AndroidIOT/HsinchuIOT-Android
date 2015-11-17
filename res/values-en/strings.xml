@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="common_sign_in">Login</string>
+    <string name="common_login_remember_password">Remember me</string>
+    <string name="common_login_username_hint">Username</string>
+    <string name="common_login_password_hint">Password</string>
+    <string name="common_login_language_en">English</string>
+    <string name="common_login_language_cn">简体中文</string>
+    <string name="common_login_language_tw">繁體中文</string>
+    <string name="common_login_title_1">AIR QUALITY MANAGEMENT</string>
+    <string name="common_login_title_2">SYSTEM OF HSINCHU</string>    
+   
+    <string name="tab_text_averagevalue">Statutory Data</string>
+    <string name="tab_text_realtimevalue">Instant Data</string>
+    
+    <string name="menuitem_sortbystatus">Order By Status</string>
+    <string name="menuitem_sortbyco2">Order By CO2</string>
+    <string name="menuitem_sortbytemperature">Order By Temperature</string>
+    <string name="menuitem_sortbyhumidity">Order By Humidity</string>
+    <string name="menuitem_sortbylocation">Order By Location</string>
+    
+    <string name="superuser_listheader_status">Status</string>
+    <string name="superuser_listheader_location">Location</string>
+    <string name="superuser_listheader_co2">CO2(ppm)</string>
+    <string name="superuser_listheader_temperature">Temperature(℃)</string>
+    <string name="superuser_listheader_humidity">Humidity(%)</string>
+    <string name="chart_interval_current">Current</string>
+    <string name="chart_interval_realtime">Realtime</string>
+    <string name="chart_interval_byquarter">Quarter</string>
+    <string name="chart_interval_byhour">Hour</string>
+    <string name="chart_interval_by8hours">8 Hours</string>
+    <string name="chart_interval_byday">Day</string>
+    <string name="chart_interval_byweek">Week</string>
+    <string name="chart_interval_bymonth">Month</string>
+    
+    <string name="chart_settimescope">Time Range</string>
+     <string name="chart_timescope_from">From</string>
+     <string name="chart_timescope_to">To</string>
+     
+     <string name="chart_time_scope_1hour">Last 1 Hour</string>
+     <string name="chart_time_scope_4hours">Last 4 Hours</string>
+     <string name="chart_time_scope_8hours">Last 8 Hours</string>
+     <string name="chart_time_scope_today">Today</string>
+     <string name="chart_time_scope_yesterday">Yesterday</string>
+     <string name="chart_time_scope_last3days">Last 3 Days</string>
+     <string name="chart_time_scope_last5days">Last 5 Days</string>
+     <string name="chart_time_scope_thisweek">This Week</string>
+     <string name="chart_time_scope_lastweek">Last Week</string>
+     <string name="chart_time_scope_last2weeks">Last 2 Weeks</string>
+     <string name="chart_time_scope_last3weeks">Last 3 Weeks</string>
+     <string name="chart_time_scope_thismonth">This Month</string>
+     <string name="chart_time_scope_lastmonth">Last Month</string>
+     <string name="chart_time_scope_last2months">Last 2 Months</string>
+     <string name="chart_time_scope_last3months">Last 3 Months</string>
+     <string name="chart_waiting">Retrieving Data...</string>
+     <string name="common_default_error_name">Error</string>
+    <string name="common_default_error_string">Response Error</string>
+    <string name="common_please_wait">Please Wait</string>
+    <string name="error_message_user_permission_wrong">User Permission Error, Forbidden Login</string>
+	<string name="error_message_gcm_register_failed">GCM register failed，the push service may not available</string>
+    <string name="alarm_title">Alarm</string> 
+    <string name="label_co2">CO2:</string>
+    <string name="label_temperature">Temperature:</string>
+    <string name="label_humidity">Humidity:</string>
+    <string name="co2">CO2</string>
+    <string name="temperature">Temperature</string>
+    <string name="humidity">Humidity</string>
+    <string name="dlg_title_systemprompt">System Prompt</string>
+    <string name="dlg_caption_deletealarm">Are you sure to delete the alarm info?</string>
+    <string name="dlg_caption_deleteallalarms">Are you sure to delete all alarm info?</string>
+    <string name="dlg_caption_exit">Are you sure want to quit?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    
+</resources>
