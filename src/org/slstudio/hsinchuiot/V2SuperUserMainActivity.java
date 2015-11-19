@@ -297,7 +297,7 @@ public class V2SuperUserMainActivity extends BaseActivity {
 		
 		sortBtn = (Button) findViewById(R.id.btn_sort);
 		sortBtn.setText(getResources().getString(
-				R.string.menuitem_sortbylocation));
+				R.string.menuitem_sortbystatus));
 		sortBtn.setOnClickListener(new OnClickListener() {
 
 			@Override

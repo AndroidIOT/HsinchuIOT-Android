@@ -35,7 +35,8 @@ public class GCMIntentService extends GCMBaseIntentService {
 
 	@Override
 	protected void onMessage(Context context, Intent intent) {
-		String message = intent.getDataString();
+		
+		String message = intent.getStringExtra("message");
 		IOTLog.d("GCMIntentService", "GCM onMessage:" + message);
 		Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
 		

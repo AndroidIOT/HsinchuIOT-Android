@@ -28,7 +28,9 @@ public class IOTAggregationDataParser  extends XmlResponseParser<Map<String,IOTM
 			String name = itemNode.getElementsByTagName("name").item(0).getTextContent();
 			String value = itemNode.getElementsByTagName("value").item(0).getTextContent();
 			String time = null;
-			if (itemNode.getElementsByTagName("hour_in_epoch").getLength()>0){
+			if (itemNode.getElementsByTagName("quarter_in_epoch").getLength()>0){
+				time = itemNode.getElementsByTagName("quarter_in_epoch").item(0).getTextContent();
+			}else if (itemNode.getElementsByTagName("hour_in_epoch").getLength()>0){
 				time = itemNode.getElementsByTagName("hour_in_epoch").item(0).getTextContent();
 			}else if (itemNode.getElementsByTagName("hours_in_epoch").getLength()>0){
 				time = itemNode.getElementsByTagName("hours_in_epoch").item(0).getTextContent();

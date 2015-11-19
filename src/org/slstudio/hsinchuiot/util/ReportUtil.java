@@ -137,6 +137,15 @@ public class ReportUtil {
 		Date d = getServerTime(date);
 		return sdfDate2.format(d) + " 00:00:00";
 	}
+	
+	public static String getServerTimeString(final Calendar cal){
+		return getServerTimeString(cal.getTime());
+	}
+	
+	public static String getServerTimeString(final Date date){
+		Date d = getServerTime(date);
+		return sdfDateTime.format(d);
+	}
 
 	public static Date getServerTime(Date localTime) {
 		Calendar c = Calendar.getInstance();

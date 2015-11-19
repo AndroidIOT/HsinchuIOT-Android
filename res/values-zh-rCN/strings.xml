@@ -23,7 +23,7 @@
     <string name="superuser_listheader_temperature">温度(℃)</string>
     <string name="superuser_listheader_humidity">湿度(%)</string> 
     <string name="chart_interval_current">当前</string>
-    <string name="chart_interval_realtime">实时</string>
+    <string name="chart_interval_by15seconds">实时</string>
     <string name="chart_interval_byquarter">刻</string>
     <string name="chart_interval_byhour">小时</string>
     <string name="chart_interval_by8hours">8小时</string>

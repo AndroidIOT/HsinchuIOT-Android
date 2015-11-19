@@ -143,12 +143,12 @@ public class V2AlarmActivity extends BaseActivity {
 				
 				intent.putExtra(Constants.ActivityPassValue.CHART_TYPE,
 						Constants.ChartSettings.CHART_TYPE_AGGRAGATION);
-				
+				/*
 				intent.putExtra(Constants.ActivityPassValue.CHART_RT_DURATION,
 						10);
-				
+				*/
 				intent.putExtra(Constants.ActivityPassValue.CHART_AGGR_GRANULARITY,
-						Constants.ChartSettings.GRANULARITY_MINUTE);
+						Constants.ChartSettings.GRANULARITY_SECONDS);
 				
 				
 				intent.putExtra(Constants.ActivityPassValue.CHART_AGGR_STARTTIME,

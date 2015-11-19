@@ -141,15 +141,17 @@ public class V2RTDataTab extends V2ListViewTab {
 			}
 
 			lvAdapter.setItems(sites);
-			if(AppConfig.TESTING){
-				sendQueryMultipleDevicesRealtimeDataRequest(deviceList);
-			}else{
 			
+			sendQueryMultipleDevicesRealtimeDataRequest(deviceList);
+			
+			/*
+			if(!AppConfig.TESTING){
 				for (Device d : deviceList) {
 					sendQueryRealtimeDataRequest(d.getDeviceID());
 				}
 			 
-			}
+			}*/
+			
 			handler.post(new Runnable() {
 
 				@Override

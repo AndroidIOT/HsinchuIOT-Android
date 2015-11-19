@@ -26,6 +26,7 @@ public class ResponseParseMapping {
 		parserMapping.put(Constants.ServerAPIURI.LOGIN, new UserParser());
 		parserMapping.put(Constants.ServerAPIURI.DEVICE_LIST, new DeviceListParser());
 		parserMapping.put(Constants.ServerAPIURI.GET_SAMPLE_DATA, new IOTSampleDataListParser());
+		parserMapping.put(Constants.ServerAPIURI.GET_QUARTER_AGG_DATA, new IOTAggregationDataParser());
 		parserMapping.put(Constants.ServerAPIURI.GET_HOUR_AGG_DATA, new IOTAggregationDataParser());
 		parserMapping.put(Constants.ServerAPIURI.GET_HOURS_AGG_DATA, new IOTAggregationDataParser());
 		parserMapping.put(Constants.ServerAPIURI.GET_DAY_AGG_DATA, new IOTAggregationDataParser());

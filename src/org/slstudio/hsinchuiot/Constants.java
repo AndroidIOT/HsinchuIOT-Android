@@ -127,7 +127,7 @@ public class Constants {
 		public static final int CHART_TYPE_REALTIME = 0;
 		public static final int CHART_TYPE_AGGRAGATION = 1;
 
-		public static final int GRANULARITY_MINUTE = 0;
+		public static final int GRANULARITY_SECONDS = 0;
 		public static final int GRANULARITY_QUARTER = 1;
 		public static final int GRANULARITY_HOUR = 2;
 		public static final int GRANULARITY_HOURS = 3;
@@ -148,6 +148,7 @@ public class Constants {
 		public static final String LOGIN = "_NBI/login.lua";
 		public static final String DEVICE_LIST = "Device/_NBI/list.lua";
 		public static final String GET_SAMPLE_DATA = "M2M/_NBI/list.lua";
+		public static final String GET_QUARTER_AGG_DATA = "M2MAggByQuarter/_NBI/list.lua";
 		public static final String GET_HOUR_AGG_DATA = "M2MAggByHour/_NBI/list.lua";
 		public static final String GET_HOURS_AGG_DATA = "M2MAggByHours/_NBI/list.lua";
 		public static final String GET_DAY_AGG_DATA = "M2MAggByDay/_NBI/list.lua";

@@ -37,9 +37,9 @@ public class V2SiteListViewAdapter extends BaseAdapter {
 	private LayoutInflater mInflater = null;
 	private Context context = null;
 	
-	private int currentSortBy = SORT_BY_LOCATION;
+	private int currentSortBy = SORT_BY_STATUS;
 	
-	private boolean[] sortDesc = {true, true, true, true, true};
+	private boolean[] sortDesc = {true, false, false, false, false};
 
 	public V2SiteListViewAdapter(Context c, List<Site> items) {
 		this.context = c;
@@ -61,7 +61,7 @@ public class V2SiteListViewAdapter extends BaseAdapter {
 	
 	public void setSortByDesc(int sortBy, boolean desc){
 		for (int i = SORT_BY_STATUS; i <SORT_BY_LOCATION +1 ; i++){
-			sortDesc[i] = true;
+			sortDesc[i] = false;
 		}
 		sortDesc[sortBy] = desc;
 	}
@@ -199,17 +199,17 @@ public class V2SiteListViewAdapter extends BaseAdapter {
 				co2TV.setText("");
 			} else if (ReportUtil.isCO2Alarm(data.getCo2())) {
 				co2TV.setTextColor(alarm);
-				co2TV.setText(Float.toString(data.getCo2()) + " ppm");
+				co2TV.setText(Float.toString(data.getCo2()));
 				leftStatusImg
 						.setBackgroundResource(R.drawable.status_icon_co2_alarm);
 			} else if (ReportUtil.isCO2Warning(data.getCo2())) {
 				co2TV.setTextColor(warning);
-				co2TV.setText(Float.toString(data.getCo2()) + " ppm");
+				co2TV.setText(Float.toString(data.getCo2()));
 				leftStatusImg
 						.setBackgroundResource(R.drawable.status_icon_co2_warning);
 			} else {
 				co2TV.setTextColor(normal);
-				co2TV.setText(Float.toString(data.getCo2()) + " ppm");
+				co2TV.setText(Float.toString(data.getCo2()));
 				leftStatusImg
 						.setBackgroundResource(R.drawable.status_icon_co2_normal);
 			}
@@ -219,20 +219,17 @@ public class V2SiteListViewAdapter extends BaseAdapter {
 				temperatureTV.setText("");
 			} else if (ReportUtil.isTemperatureAlarm(data.getTemperature())) {
 				temperatureTV.setTextColor(alarm);
-				temperatureTV.setText(Float.toString(data.getTemperature())
-						+ " ℃");
+				temperatureTV.setText(Float.toString(data.getTemperature()));
 				rightStatusImg
 						.setBackgroundResource(R.drawable.status_icon_temperature_alarm);
 			} else if (ReportUtil.isTemperatureWarning(data.getTemperature())) {
 				temperatureTV.setTextColor(warning);
-				temperatureTV.setText(Float.toString(data.getTemperature())
-						+ " ℃");
+				temperatureTV.setText(Float.toString(data.getTemperature()));
 				rightStatusImg
 						.setBackgroundResource(R.drawable.status_icon_temperature_warning);
 			} else {
 				temperatureTV.setTextColor(normal);
-				temperatureTV.setText(Float.toString(data.getTemperature())
-						+ " ℃");
+				temperatureTV.setText(Float.toString(data.getTemperature()));
 				rightStatusImg
 						.setBackgroundResource(R.drawable.status_icon_temperature_normal);
 			}
@@ -240,13 +237,13 @@ public class V2SiteListViewAdapter extends BaseAdapter {
 				humidityTV.setText("");
 			} else if (ReportUtil.isHumidityAlarm(data.getHumidity())) {
 				humidityTV.setTextColor(alarm);
-				humidityTV.setText(Float.toString(data.getHumidity()) + " %");
+				humidityTV.setText(Float.toString(data.getHumidity()));
 			} else if (ReportUtil.isHumidityWarning(data.getHumidity())) {
 				humidityTV.setTextColor(warning);
-				humidityTV.setText(Float.toString(data.getHumidity()) + " %");
+				humidityTV.setText(Float.toString(data.getHumidity()));
 			} else {
 				humidityTV.setTextColor(normal);
-				humidityTV.setText(Float.toString(data.getHumidity()) + " %");
+				humidityTV.setText(Float.toString(data.getHumidity()));
 			}
 		}
 
@@ -270,30 +267,61 @@ public class V2SiteListViewAdapter extends BaseAdapter {
 		private int getSiteStatus(Site site) {
 			float co2 = site.getMonitorData().getCo2();
 			float temperature = site.getMonitorData().getTemperature();
-
-			int co2Status = 0;
+			
+			int status = 0;
+			
 			if (co2 != 0f) {
 				if (ReportUtil.isCO2Alarm(co2)) {
-					co2Status = 1;
+					if (temperature != 0f) {
+						if (ReportUtil.isTemperatureAlarm(temperature)) {
+							status = 16;
+						} else if (ReportUtil.isTemperatureWarning(temperature)) {
+							status = 15;
+						} else {
+							status = 14;
+						}
+					}else{
+						status = 13;
+					}
 				} else if (ReportUtil.isCO2Warning(co2)) {
-					co2Status = 2;
+					if (temperature != 0f) {
+						if (ReportUtil.isTemperatureAlarm(temperature)) {
+							status = 12;
+						} else if (ReportUtil.isTemperatureWarning(temperature)) {
+							status = 11;
+						} else {
+							status = 10;
+						}
+					}else{
+						status = 9;
+					}
 				} else {
-					co2Status = 5;
+					if (temperature != 0f) {
+						if (ReportUtil.isTemperatureAlarm(temperature)) {
+							status = 8;
+						} else if (ReportUtil.isTemperatureWarning(temperature)) {
+							status = 6;
+						} else {
+							status = 4;
+						}
+					}else{
+						status = 3;
+					}
+				}
+			}else{
+				if (temperature != 0f) {
+					if (ReportUtil.isTemperatureAlarm(temperature)) {
+						status = 7;
+					} else if (ReportUtil.isTemperatureWarning(temperature)) {
+						status = 5;
+					} else {
+						status = 2;
+					}
+				}else{
+					status = 1;
 				}
 			}
-
-			int temperatureStatus = 0;
-			if (temperature != 0f) {
-				if (ReportUtil.isTemperatureAlarm(temperature)) {
-					temperatureStatus = 3;
-				} else if (ReportUtil.isTemperatureWarning(temperature)) {
-					temperatureStatus = 4;
-				} else {
-					temperatureStatus = 6;
-				}
-			}
-
-			return co2Status * 10 + temperatureStatus;
+			return status;
 		}
 
 	}

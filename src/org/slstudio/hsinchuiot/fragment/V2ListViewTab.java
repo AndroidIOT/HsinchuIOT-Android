@@ -82,28 +82,25 @@ public abstract class V2ListViewTab extends Fragment {
 					int position, long arg3) {
 				if (position == 0)
 					return;
-
-				Calendar to = Calendar.getInstance();
-				to.set(Calendar.MINUTE, 0);
-				to.set(Calendar.SECOND, 0);
 				
 				Calendar from = Calendar.getInstance();
-				from.set(Calendar.MINUTE, 0);
-				from.set(Calendar.SECOND, 0);
-				from.add(Calendar.HOUR_OF_DAY, -8);
+				from.add(Calendar.MINUTE, -10);
 				
+				Calendar to = Calendar.getInstance();
+								
 				Intent intent = new Intent();
 				intent.putExtra(Constants.ActivityPassValue.SELECTED_SITE,
 						(Site) lvAdapter.getItem(position));
 				
 				intent.putExtra(Constants.ActivityPassValue.CHART_TYPE,
-						Constants.ChartSettings.CHART_TYPE_AGGRAGATION);
+						Constants.ChartSettings.CHART_TYPE_REALTIME);
 				
 				intent.putExtra(Constants.ActivityPassValue.CHART_RT_DURATION,
-						5);
+						10);
 				
+				/*
 				intent.putExtra(Constants.ActivityPassValue.CHART_AGGR_GRANULARITY,
-						Constants.ChartSettings.GRANULARITY_HOUR);
+						Constants.ChartSettings.GRANULARITY_SECONDS);
 				
 				
 				intent.putExtra(Constants.ActivityPassValue.CHART_AGGR_STARTTIME,
@@ -111,7 +108,7 @@ public abstract class V2ListViewTab extends Fragment {
 				
 				intent.putExtra(Constants.ActivityPassValue.CHART_AGGR_ENDTIME,
 						to.getTime().getTime());
-				
+				*/
 				intent.setClass(getActivity(), V2SiteDetailActivity.class);
 				startActivity(intent);
 			}

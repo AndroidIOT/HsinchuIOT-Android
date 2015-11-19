@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">新竹IOT</string>
+    <string name="app_name">新竹IAQ</string>
     <string name="action_settings">&#160;&#160;設&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;定</string>
     <string name="action_logoff">&#160;&#160;退&#160;&#160;出&#160;&#160;登&#160;&#160;錄&#160;&#160;</string>
     <string name="action_ok">確定</string>
@@ -83,7 +83,7 @@
     <string name="superuser_listheader_temperature">溫度(℃)</string>
     <string name="superuser_listheader_humidity">濕度(%)</string>
     <string name="chart_interval_current">當前</string>
-    <string name="chart_interval_realtime">即時</string>
+    <string name="chart_interval_by15seconds">實時</string>
     <string name="chart_interval_byquarter">刻</string>
     <string name="chart_interval_byhour">小時</string>
     <string name="chart_interval_by8hours">8小時</string>

@@ -49,6 +49,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -56,29 +57,23 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 public class V2SiteDetailActivity extends BaseActivity {
-	public final String[] monthSelection = { "01", "02", "03", "04", "05",
-			"06", "07", "08", "09", "10", "11", "12" };
-	public final String[] dateSelection = { "01", "02", "03", "04", "05", "06",
-			"07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17",
-			"18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28",
-			"29", "30", "31" };
-	public final String[] hourSelection = { "00", "01", "02", "03", "04", "05",
-			"06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16",
-			"17", "18", "19", "20", "21", "22", "23" };
-	public final String[] minuteSelection = { "00", "01", "02", "03", "04",
-			"05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15",
-			"16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26",
-			"27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37",
-			"38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48",
-			"49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" };
-	public final String[] secondSelection = { "00", "01", "02", "03", "04",
-			"05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15",
-			"16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26",
-			"27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37",
-			"38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48",
-			"49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" };
+	public final String[] monthSelection = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
+	public final String[] dateSelection = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12",
+			"13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30",
+			"31" };
+	public final String[] hourSelection = { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
+			"12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" };
+	public final String[] minuteSelection = { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
+			"12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
+			"30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47",
+			"48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" };
+	public final String[] secondSelection = { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
+			"12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
+			"30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47",
+			"48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59" };
 
 	public static final int TIME_PERIOD_1_HOUR = 0;
 	public static final int TIME_PERIOD_4_HOURS = 1;
@@ -105,18 +100,15 @@ public class V2SiteDetailActivity extends BaseActivity {
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case Constants.MessageKey.MESSAGE_GET_CHART_DATA:
-				IOTLog.d("Handler",
-						"debuginfo(CHART_DATA) - handleMessage: receive msg MESSAGE_GET_CHART_DATA");
+				IOTLog.d("Handler", "debuginfo(CHART_DATA) - handleMessage: receive msg MESSAGE_GET_CHART_DATA");
 				if (currentSite != null && !isPaused) {
-					if (sendQueryChartDataRequest(currentSite.getDevice()
-							.getDeviceID())) {
+					if (sendQueryChartDataRequest(currentSite.getDevice().getDeviceID())) {
 						updateChartDataInProcessing();
 					}
 				}
 				break;
 			case Constants.MessageKey.MESSAGE_UPDATE_CHART_DATA:
-				IOTLog.d("Handler",
-						"debuginfo(CHART_DATA) - handleMessage: receive msg MESSAGE_UPDATE_CHART_DATA");
+				IOTLog.d("Handler", "debuginfo(CHART_DATA) - handleMessage: receive msg MESSAGE_UPDATE_CHART_DATA");
 				if (currentSite != null && !isPaused) {
 					if (updateChartData((List<IOTSampleData>) msg.obj)) {
 						updateChartDataFinished();
@@ -131,8 +123,8 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 	private Site currentSite;
 	private int chartType = Constants.ChartSettings.CHART_TYPE_REALTIME;
-	private int chartTimeDuration = 5;
-	private int chartGranularity = Constants.ChartSettings.GRANULARITY_HOUR;
+	private int chartTimeDuration = 10;
+	private int chartGranularity = Constants.ChartSettings.GRANULARITY_SECONDS;
 	private Date chartStartTime;
 	private Date chartEndTime;
 
@@ -162,37 +154,37 @@ public class V2SiteDetailActivity extends BaseActivity {
 	private ImageButton btnTimeScope;
 	private ImageButton btnTimeScope2;
 	private RadioGroup rgInterval;
-	private RadioButton rbIntervalRealtime;
 	private RadioButton rbIntervalCurrent;
+	private RadioButton rbIntervalBy15Seconds;
 	private RadioButton rbIntervalByQuarter;
 	private RadioButton rbIntervalByHour;
 	private RadioButton rbIntervalBy8Hours;
 	private RadioButton rbIntervalByDay;
 	private RadioButton rbIntervalByWeek;
 	private RadioButton rbIntervalByMonth;
-	
+
 	private ProgressDialog progressDialog;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		currentSite = (Site) getIntent().getSerializableExtra(
-				Constants.ActivityPassValue.SELECTED_SITE);
-		chartType = getIntent().getIntExtra(
-				Constants.ActivityPassValue.CHART_TYPE,
+		currentSite = (Site) getIntent().getSerializableExtra(Constants.ActivityPassValue.SELECTED_SITE);
+		chartType = getIntent().getIntExtra(Constants.ActivityPassValue.CHART_TYPE,
 				Constants.ChartSettings.CHART_TYPE_REALTIME);
-		chartTimeDuration = getIntent().getIntExtra(
-				Constants.ActivityPassValue.CHART_RT_DURATION, 5);
-		chartGranularity = getIntent().getIntExtra(
-				Constants.ActivityPassValue.CHART_AGGR_GRANULARITY,
-				Constants.ChartSettings.GRANULARITY_HOUR);
-		long startTimeLong = getIntent().getLongExtra(
-				Constants.ActivityPassValue.CHART_AGGR_STARTTIME, 0);
+		chartTimeDuration = getIntent().getIntExtra(Constants.ActivityPassValue.CHART_RT_DURATION, 10);
+		chartGranularity = getIntent().getIntExtra(Constants.ActivityPassValue.CHART_AGGR_GRANULARITY,
+				Constants.ChartSettings.GRANULARITY_SECONDS);
+		long startTimeLong = getIntent().getLongExtra(Constants.ActivityPassValue.CHART_AGGR_STARTTIME, 0);
 		chartStartTime = new Date();
 		if (startTimeLong != 0) {
 			chartStartTime.setTime(startTimeLong);
+		} else {
+			// set to past 10 min
+			Calendar now = Calendar.getInstance();
+			now.add(Calendar.MINUTE, -10);
+			chartStartTime = now.getTime();
 		}
-		long endTimeLong = getIntent().getLongExtra(
-				Constants.ActivityPassValue.CHART_AGGR_ENDTIME, 0);
+
+		long endTimeLong = getIntent().getLongExtra(Constants.ActivityPassValue.CHART_AGGR_ENDTIME, 0);
 		chartEndTime = new Date();
 		if (endTimeLong != 0) {
 			chartEndTime.setTime(endTimeLong);
@@ -211,8 +203,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 	@Override
 	protected void onResume() {
 
-		IOTLog.d("V2SuperUserSiteDetailActivity",
-				"debuginfo - onResume: re-send messages");
+		IOTLog.d("V2SuperUserSiteDetailActivity", "debuginfo - onResume: re-send messages");
 		isPaused = false;
 
 		resendMessage();
@@ -224,12 +215,10 @@ public class V2SiteDetailActivity extends BaseActivity {
 	protected void onPause() {
 		isPaused = true;
 
-		IOTLog.d("V2SuperUserSiteDetailActivity",
-				"debuginfo(CHART_DATA) - onPause: remove msgs from queue");
+		IOTLog.d("V2SuperUserSiteDetailActivity", "debuginfo(CHART_DATA) - onPause: remove msgs from queue");
 		handler.removeMessages(Constants.MessageKey.MESSAGE_GET_CHART_DATA);
 
-		IOTLog.d("V2SuperUserSiteDetailActivity",
-				"debuginfo(CHART_DATA) - onPause: cancel http request");
+		IOTLog.d("V2SuperUserSiteDetailActivity", "debuginfo(CHART_DATA) - onPause: cancel http request");
 
 		if (chartRC != null) {
 			chartRC.cancel();
@@ -240,12 +229,10 @@ public class V2SiteDetailActivity extends BaseActivity {
 	@Override
 	protected void onDestroy() {
 
-		IOTLog.d("V2SuperUserSiteDetailActivity",
-				"debuginfo(CHART_DATA) - onDestroy: remove msgs from queue");
+		IOTLog.d("V2SuperUserSiteDetailActivity", "debuginfo(CHART_DATA) - onDestroy: remove msgs from queue");
 		handler.removeMessages(Constants.MessageKey.MESSAGE_GET_CHART_DATA);
 
-		IOTLog.d("V2SuperUserSiteDetailActivity",
-				"debuginfo(CHART_DATA) - onDestroy: cancel http request");
+		IOTLog.d("V2SuperUserSiteDetailActivity", "debuginfo(CHART_DATA) - onDestroy: cancel http request");
 
 		if (chartRC != null) {
 			chartRC.cancel();
@@ -319,57 +306,149 @@ public class V2SiteDetailActivity extends BaseActivity {
 		});
 
 		rgInterval = (RadioGroup) findViewById(R.id.interval_btn_group);
-		rgInterval
-				.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-					@Override
-					public void onCheckedChanged(RadioGroup group, int checkedId) {
-						if (checkedId == R.id.interval_btn_realtime) {
-							chartType = Constants.ChartSettings.CHART_TYPE_REALTIME;
-							btnTimeScope.setVisibility(View.GONE);
-							btnTimeScope2.setVisibility(View.GONE);
-						}else if (checkedId == R.id.interval_btn_current) {
-							chartType = Constants.ChartSettings.CHART_TYPE_AGGRAGATION;
-							chartGranularity = Constants.ChartSettings.GRANULARITY_MINUTE;
-							btnTimeScope.setVisibility(View.VISIBLE);
-							btnTimeScope2.setVisibility(View.VISIBLE);
-						}else if (checkedId == R.id.interval_btn_byquarter) {
-							chartType = Constants.ChartSettings.CHART_TYPE_AGGRAGATION;
-							chartGranularity = Constants.ChartSettings.GRANULARITY_QUARTER;
-							btnTimeScope.setVisibility(View.VISIBLE);
-							btnTimeScope2.setVisibility(View.VISIBLE);
-						}else if (checkedId == R.id.interval_btn_byhour) {
-							chartType = Constants.ChartSettings.CHART_TYPE_AGGRAGATION;
-							chartGranularity = Constants.ChartSettings.GRANULARITY_HOUR;
-							btnTimeScope.setVisibility(View.VISIBLE);
-							btnTimeScope2.setVisibility(View.VISIBLE);
-						} else if (checkedId == R.id.interval_btn_by8hours) {
-							chartType = Constants.ChartSettings.CHART_TYPE_AGGRAGATION;
-							chartGranularity = Constants.ChartSettings.GRANULARITY_HOURS;
-							btnTimeScope.setVisibility(View.VISIBLE);
-							btnTimeScope2.setVisibility(View.VISIBLE);
-						} else if (checkedId == R.id.interval_btn_byday) {
-							chartType = Constants.ChartSettings.CHART_TYPE_AGGRAGATION;
-							chartGranularity = Constants.ChartSettings.GRANULARITY_DAY;
-							btnTimeScope.setVisibility(View.VISIBLE);
-							btnTimeScope2.setVisibility(View.VISIBLE);
-						} else if (checkedId == R.id.interval_btn_byweek) {
-							chartType = Constants.ChartSettings.CHART_TYPE_AGGRAGATION;
-							chartGranularity = Constants.ChartSettings.GRANULARITY_WEEK;
-							btnTimeScope.setVisibility(View.VISIBLE);
-							btnTimeScope2.setVisibility(View.VISIBLE);
-						} else if (checkedId == R.id.interval_btn_bymonth) {
-							chartType = Constants.ChartSettings.CHART_TYPE_AGGRAGATION;
-							chartGranularity = Constants.ChartSettings.GRANULARITY_MONTH;
-							btnTimeScope.setVisibility(View.VISIBLE);
-							btnTimeScope2.setVisibility(View.VISIBLE);
-						}
-						//generateChart();
-						resendMessage();
+		rgInterval.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				if (checkedId == R.id.interval_btn_current) {
+					chartType = Constants.ChartSettings.CHART_TYPE_REALTIME;
+					chartTimeDuration = 10;
+					btnTimeScope.setVisibility(View.GONE);
+					btnTimeScope2.setVisibility(View.GONE);
+				} else if (checkedId == R.id.interval_btn_by15seconds) {
+					chartType = Constants.ChartSettings.CHART_TYPE_AGGRAGATION;
+					chartGranularity = Constants.ChartSettings.GRANULARITY_SECONDS;
+					
+					
+					//check interval is larger than 1 min, otherwise set to time
+					Calendar from = Calendar.getInstance();
+					from.setTime(chartStartTime);
+					
+					Calendar to = Calendar.getInstance();
+					to.setTime(chartEndTime);
+					
+					to.add(Calendar.MINUTE, -1);
+					if(to.before(from)){
+						chartStartTime = to.getTime();
 					}
+					
+					btnTimeScope.setVisibility(View.VISIBLE);
+					btnTimeScope2.setVisibility(View.VISIBLE);
+				} else if (checkedId == R.id.interval_btn_byquarter) {
+					chartType = Constants.ChartSettings.CHART_TYPE_AGGRAGATION;
+					chartGranularity = Constants.ChartSettings.GRANULARITY_QUARTER;
+					
+					//check interval is larger than 1 quarter, otherwise set to time
+					Calendar from = Calendar.getInstance();
+					from.setTime(chartStartTime);
+					
+					Calendar to = Calendar.getInstance();
+					to.setTime(chartEndTime);
+					
+					to.add(Calendar.MINUTE, -15);
+					if(to.before(from)){
+						chartStartTime = to.getTime();
+					}
+					
+					btnTimeScope.setVisibility(View.VISIBLE);
+					btnTimeScope2.setVisibility(View.VISIBLE);
+				} else if (checkedId == R.id.interval_btn_byhour) {
+					chartType = Constants.ChartSettings.CHART_TYPE_AGGRAGATION;
+					chartGranularity = Constants.ChartSettings.GRANULARITY_HOUR;
+					
+					//check interval is larger than 1 hour, otherwise set to time
+					Calendar from = Calendar.getInstance();
+					from.setTime(chartStartTime);
+					
+					Calendar to = Calendar.getInstance();
+					to.setTime(chartEndTime);
+					
+					to.add(Calendar.HOUR_OF_DAY, -1);
+					if(to.before(from)){
+						chartStartTime = to.getTime();
+					}
+					
+					btnTimeScope.setVisibility(View.VISIBLE);
+					btnTimeScope2.setVisibility(View.VISIBLE);
+				} else if (checkedId == R.id.interval_btn_by8hours) {
+					chartType = Constants.ChartSettings.CHART_TYPE_AGGRAGATION;
+					chartGranularity = Constants.ChartSettings.GRANULARITY_HOURS;
+					
+					//check interval is larger than 8 hours, otherwise set to time
+					Calendar from = Calendar.getInstance();
+					from.setTime(chartStartTime);
+					
+					Calendar to = Calendar.getInstance();
+					to.setTime(chartEndTime);
+					
+					to.add(Calendar.HOUR_OF_DAY, -8);
+					if(to.before(from)){
+						chartStartTime = to.getTime();
+					}
+					
+					btnTimeScope.setVisibility(View.VISIBLE);
+					btnTimeScope2.setVisibility(View.VISIBLE);
+				} else if (checkedId == R.id.interval_btn_byday) {
+					chartType = Constants.ChartSettings.CHART_TYPE_AGGRAGATION;
+					chartGranularity = Constants.ChartSettings.GRANULARITY_DAY;
+					
+					//check interval is larger than 1 day, otherwise set to time
+					Calendar from = Calendar.getInstance();
+					from.setTime(chartStartTime);
+					
+					Calendar to = Calendar.getInstance();
+					to.setTime(chartEndTime);
+					
+					to.add(Calendar.DATE, -1);
+					if(to.before(from)){
+						chartStartTime = to.getTime();
+					}
+					
+					btnTimeScope.setVisibility(View.VISIBLE);
+					btnTimeScope2.setVisibility(View.VISIBLE);
+				} else if (checkedId == R.id.interval_btn_byweek) {
+					chartType = Constants.ChartSettings.CHART_TYPE_AGGRAGATION;
+					chartGranularity = Constants.ChartSettings.GRANULARITY_WEEK;
+					
+					//check interval is larger than 1 week, otherwise set to time
+					Calendar from = Calendar.getInstance();
+					from.setTime(chartStartTime);
+					
+					Calendar to = Calendar.getInstance();
+					to.setTime(chartEndTime);
+					
+					to.add(Calendar.DATE, -7);
+					if(to.before(from)){
+						chartStartTime = to.getTime();
+					}
+					
+					btnTimeScope.setVisibility(View.VISIBLE);
+					btnTimeScope2.setVisibility(View.VISIBLE);
+				} else if (checkedId == R.id.interval_btn_bymonth) {
+					chartType = Constants.ChartSettings.CHART_TYPE_AGGRAGATION;
+					chartGranularity = Constants.ChartSettings.GRANULARITY_MONTH;
+					
+					//check interval is larger than 1 month, otherwise set to time
+					Calendar from = Calendar.getInstance();
+					from.setTime(chartStartTime);
+					
+					Calendar to = Calendar.getInstance();
+					to.setTime(chartEndTime);
+					
+					to.add(Calendar.MONTH, -1);
+					if(to.before(from)){
+						chartStartTime = to.getTime();
+					}
+					
+					btnTimeScope.setVisibility(View.VISIBLE);
+					btnTimeScope2.setVisibility(View.VISIBLE);
+				}
+				// generateChart();
+				resendMessage();
+			}
 
-				});
-		rbIntervalRealtime = (RadioButton) findViewById(R.id.interval_btn_realtime);
+		});
 		rbIntervalCurrent = (RadioButton) findViewById(R.id.interval_btn_current);
+		rbIntervalBy15Seconds = (RadioButton) findViewById(R.id.interval_btn_by15seconds);
 		rbIntervalByQuarter = (RadioButton) findViewById(R.id.interval_btn_byquarter);
 		rbIntervalByHour = (RadioButton) findViewById(R.id.interval_btn_byhour);
 		rbIntervalBy8Hours = (RadioButton) findViewById(R.id.interval_btn_by8hours);
@@ -378,17 +457,17 @@ public class V2SiteDetailActivity extends BaseActivity {
 		rbIntervalByMonth = (RadioButton) findViewById(R.id.interval_btn_bymonth);
 
 		if (chartType == Constants.ChartSettings.CHART_TYPE_REALTIME) {
-			rbIntervalRealtime.setChecked(true);
+			rbIntervalCurrent.setChecked(true);
 			btnTimeScope.setVisibility(View.GONE);
 			btnTimeScope2.setVisibility(View.GONE);
 		} else if (chartType == Constants.ChartSettings.CHART_TYPE_AGGRAGATION) {
 			btnTimeScope.setVisibility(View.VISIBLE);
 			btnTimeScope2.setVisibility(View.VISIBLE);
-			if (chartGranularity == Constants.ChartSettings.GRANULARITY_MINUTE) {
-				rbIntervalCurrent.setChecked(true);
-			}if (chartGranularity == Constants.ChartSettings.GRANULARITY_QUARTER) {
+			if (chartGranularity == Constants.ChartSettings.GRANULARITY_SECONDS) {
+				rbIntervalBy15Seconds.setChecked(true);
+			} else if (chartGranularity == Constants.ChartSettings.GRANULARITY_QUARTER) {
 				rbIntervalByQuarter.setChecked(true);
-			}else if (chartGranularity == Constants.ChartSettings.GRANULARITY_HOUR) {
+			} else if (chartGranularity == Constants.ChartSettings.GRANULARITY_HOUR) {
 				rbIntervalByHour.setChecked(true);
 			} else if (chartGranularity == Constants.ChartSettings.GRANULARITY_HOURS) {
 				rbIntervalBy8Hours.setChecked(true);
@@ -402,42 +481,130 @@ public class V2SiteDetailActivity extends BaseActivity {
 		}
 
 	}
-
-	private void showTimeScopeDialog() {
-		View view = View.inflate(getApplicationContext(),
-				R.layout.v2_dialog_chart_timescope, null);
-		ImageButton btnClose = (ImageButton) view
-				.findViewById(R.id.btn_chart_timescope_close);
+	private void showTimeScopeDialogBack(){
+		View view = View.inflate(getApplicationContext(), R.layout.v2_dialog_chart_timescope3, null);
+		ImageButton btnClose = (ImageButton) view.findViewById(R.id.btn_chart_timescope_close);
 		Button btnOk = (Button) view.findViewById(R.id.btn_chart_timescope_ok);
-		Button btnCancel = (Button) view
-				.findViewById(R.id.btn_chart_timescope_cancel);
-		final Button btnFromYear = (Button) view
-				.findViewById(R.id.btn_chart_timescope_from_year);
-		final Button btnFromMonth = (Button) view
-				.findViewById(R.id.btn_chart_timescope_from_month);
-		final Button btnFromDay = (Button) view
-				.findViewById(R.id.btn_chart_timescope_from_day);
-		final Button btnFromHour = (Button) view
-				.findViewById(R.id.btn_chart_timescope_from_hour);
-		final Button btnFromMinute = (Button) view
-				.findViewById(R.id.btn_chart_timescope_from_minute);
-		final Button btnFromSecond = (Button) view
-				.findViewById(R.id.btn_chart_timescope_from_second);
-		final Button btnToYear = (Button) view
-				.findViewById(R.id.btn_chart_timescope_to_year);
-		final Button btnToMonth = (Button) view
-				.findViewById(R.id.btn_chart_timescope_to_month);
-		final Button btnToDay = (Button) view
-				.findViewById(R.id.btn_chart_timescope_to_day);
-		final Button btnToHour = (Button) view
-				.findViewById(R.id.btn_chart_timescope_to_hour);
-		final Button btnToMinute = (Button) view
-				.findViewById(R.id.btn_chart_timescope_to_minute);
-		final Button btnToSecond = (Button) view
-				.findViewById(R.id.btn_chart_timescope_to_second);
+		Button btnCancel = (Button) view.findViewById(R.id.btn_chart_timescope_cancel);
+		final DatePicker fromDatePicker = (DatePicker) view.findViewById(R.id.datePicker_from);
+		fromDatePicker.init(chartStartTime.getYear(), chartStartTime.getMonth(), chartStartTime.getDate(), null);
+		
+		final TimePicker fromTimePicker = (TimePicker) view.findViewById(R.id.timePicker_from);
+		fromTimePicker.setIs24HourView(true);
+		fromTimePicker.setCurrentHour(chartStartTime.getHours());
+		fromTimePicker.setCurrentMinute(chartStartTime.getMinutes());
+	
+		
+		
+		final DatePicker toDatePicker = (DatePicker) view.findViewById(R.id.datePicker_to);
+		fromDatePicker.init(chartEndTime.getYear(), chartEndTime.getMonth(), chartEndTime.getDate(), null);
+		
+		final TimePicker toTimePicker = (TimePicker) view.findViewById(R.id.timePicker_to);
+		toTimePicker.setIs24HourView(true);
+		toTimePicker.setCurrentHour(chartEndTime.getHours());
+		toTimePicker.setCurrentMinute(chartEndTime.getMinutes());
+	
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(V2SiteDetailActivity.this,
+				android.R.style.Theme_Black_NoTitleBar).setView(view);
 
-		AlertDialog.Builder builder = new AlertDialog.Builder(
-				V2SiteDetailActivity.this,
+		final AlertDialog dlg = builder.create();
+
+/*		Window dialogWindow = dlg.getWindow();
+
+		WindowManager m = getWindowManager();
+		Display d = m.getDefaultDisplay(); // 获取屏幕宽、高用
+		WindowManager.LayoutParams p = dlg.getWindow().getAttributes(); // 获取对话框当前的参数值
+		p.height = (int) (d.getHeight() * 0.8); // 高度设置为屏幕的0.6
+		p.width = (int) (d.getWidth() * 0.65); // 宽度设置为屏幕的0.95
+		dialogWindow.setAttributes(p);
+	*/
+		dlg.setCancelable(false);
+
+		btnClose.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dlg.dismiss();
+			}
+
+		});
+		btnOk.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				int fromYear = fromDatePicker.getYear();
+				int fromMonth = fromDatePicker.getMonth();
+				int fromDate = fromDatePicker.getDayOfMonth();
+				int fromHour = fromTimePicker.getCurrentHour();
+				int fromMinute = fromTimePicker.getCurrentMinute();
+				
+				int toYear = toDatePicker.getYear();
+				int toMonth = toDatePicker.getMonth();
+				int toDate = toDatePicker.getDayOfMonth();
+				int toHour = toTimePicker.getCurrentHour();
+				int toMinute = toTimePicker.getCurrentMinute();
+				
+				
+				
+				Calendar sCal = Calendar.getInstance();
+				sCal.set(Calendar.YEAR, fromYear);
+				sCal.set(Calendar.MONTH, fromMonth - 1);
+				sCal.set(Calendar.DATE, fromDate);
+				sCal.set(Calendar.HOUR_OF_DAY, fromHour);
+				sCal.set(Calendar.MINUTE, fromMinute);
+				sCal.set(Calendar.SECOND, 0);
+
+				chartStartTime = sCal.getTime();
+
+				Calendar eCal = Calendar.getInstance();
+				eCal.set(Calendar.YEAR, toYear);
+				eCal.set(Calendar.MONTH, toMonth - 1);
+				eCal.set(Calendar.DATE, toDate);
+				eCal.set(Calendar.HOUR_OF_DAY, toHour);
+				eCal.set(Calendar.MINUTE, toMinute);
+				eCal.set(Calendar.SECOND, 0);
+
+				chartEndTime = eCal.getTime();
+
+				dlg.dismiss();
+
+				// generateChart();
+				resendMessage();
+			}
+
+		});
+		btnCancel.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dlg.dismiss();
+			}
+
+		});
+		
+		dlg.show();
+	}
+	
+	private void showTimeScopeDialog() {
+		View view = View.inflate(getApplicationContext(), R.layout.v2_dialog_chart_timescope, null);
+		ImageButton btnClose = (ImageButton) view.findViewById(R.id.btn_chart_timescope_close);
+		Button btnOk = (Button) view.findViewById(R.id.btn_chart_timescope_ok);
+		Button btnCancel = (Button) view.findViewById(R.id.btn_chart_timescope_cancel);
+		final Button btnFromYear = (Button) view.findViewById(R.id.btn_chart_timescope_from_year);
+		final Button btnFromMonth = (Button) view.findViewById(R.id.btn_chart_timescope_from_month);
+		final Button btnFromDay = (Button) view.findViewById(R.id.btn_chart_timescope_from_day);
+		final Button btnFromHour = (Button) view.findViewById(R.id.btn_chart_timescope_from_hour);
+		final Button btnFromMinute = (Button) view.findViewById(R.id.btn_chart_timescope_from_minute);
+		final Button btnFromSecond = (Button) view.findViewById(R.id.btn_chart_timescope_from_second);
+		final Button btnToYear = (Button) view.findViewById(R.id.btn_chart_timescope_to_year);
+		final Button btnToMonth = (Button) view.findViewById(R.id.btn_chart_timescope_to_month);
+		final Button btnToDay = (Button) view.findViewById(R.id.btn_chart_timescope_to_day);
+		final Button btnToHour = (Button) view.findViewById(R.id.btn_chart_timescope_to_hour);
+		final Button btnToMinute = (Button) view.findViewById(R.id.btn_chart_timescope_to_minute);
+		final Button btnToSecond = (Button) view.findViewById(R.id.btn_chart_timescope_to_second);
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(V2SiteDetailActivity.this,
 				android.R.style.Theme_Black_NoTitleBar).setView(view);
 
 		final AlertDialog dlg = builder.create();
@@ -464,26 +631,19 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 			@Override
 			public void onClick(View v) {
-				int fromYear = Integer.parseInt(btnFromYear.getText()
-						.toString());
-				int fromMonth = Integer.parseInt(btnFromMonth.getText()
-						.toString());
+				int fromYear = Integer.parseInt(btnFromYear.getText().toString());
+				int fromMonth = Integer.parseInt(btnFromMonth.getText().toString());
 				int fromDay = Integer.parseInt(btnFromDay.getText().toString());
-				int fromHour = Integer.parseInt(btnFromHour.getText()
-						.toString());
-				int fromMinute = Integer.parseInt(btnFromMinute.getText()
-						.toString());
-				int fromSecond = Integer.parseInt(btnFromSecond.getText()
-						.toString());
+				int fromHour = Integer.parseInt(btnFromHour.getText().toString());
+				int fromMinute = Integer.parseInt(btnFromMinute.getText().toString());
+				int fromSecond = Integer.parseInt(btnFromSecond.getText().toString());
 
 				int toYear = Integer.parseInt(btnToYear.getText().toString());
 				int toMonth = Integer.parseInt(btnToMonth.getText().toString());
 				int toDay = Integer.parseInt(btnToDay.getText().toString());
 				int toHour = Integer.parseInt(btnToHour.getText().toString());
-				int toMinute = Integer.parseInt(btnToMinute.getText()
-						.toString());
-				int toSecond = Integer.parseInt(btnToSecond.getText()
-						.toString());
+				int toMinute = Integer.parseInt(btnToMinute.getText().toString());
+				int toSecond = Integer.parseInt(btnToSecond.getText().toString());
 
 				Calendar sCal = Calendar.getInstance();
 				sCal.set(Calendar.YEAR, fromYear);
@@ -507,7 +667,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 				dlg.dismiss();
 
-				//generateChart();
+				// generateChart();
 				resendMessage();
 			}
 
@@ -522,25 +682,20 @@ public class V2SiteDetailActivity extends BaseActivity {
 		});
 
 		int currentYear = Calendar.getInstance().get(Calendar.YEAR);
-		final String[] yearSelection = { Integer.toString(currentYear - 2),
-				Integer.toString(currentYear - 1),
-				Integer.toString(currentYear),
-				Integer.toString(currentYear + 1),
-				Integer.toString(currentYear + 2) };
+		final String[] yearSelection = { Integer.toString(currentYear - 2), Integer.toString(currentYear - 1),
+				Integer.toString(currentYear), Integer.toString(currentYear + 1), Integer.toString(currentYear + 2) };
 
 		btnFromYear.setText(Integer.toString(chartStartTime.getYear() + 1900));
 		btnFromYear.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Dialog dialog = new AlertDialog.Builder(
-						V2SiteDetailActivity.this).setItems(
-						yearSelection, new DialogInterface.OnClickListener() {
+				Dialog dialog = new AlertDialog.Builder(V2SiteDetailActivity.this)
+						.setItems(yearSelection, new DialogInterface.OnClickListener() {
 
-							public void onClick(DialogInterface dialog,
-									int which) {
-								btnFromYear.setText(yearSelection[which]);
-							}
-						}).create();
+					public void onClick(DialogInterface dialog, int which) {
+						btnFromYear.setText(yearSelection[which]);
+					}
+				}).create();
 				dialog.show();
 
 			}
@@ -552,15 +707,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 			@Override
 			public void onClick(View v) {
-				Dialog dialog = new AlertDialog.Builder(
-						V2SiteDetailActivity.this).setItems(
-						monthSelection, new DialogInterface.OnClickListener() {
+				Dialog dialog = new AlertDialog.Builder(V2SiteDetailActivity.this)
+						.setItems(monthSelection, new DialogInterface.OnClickListener() {
 
-							public void onClick(DialogInterface dialog,
-									int which) {
-								btnFromMonth.setText(monthSelection[which]);
-							}
-						}).create();
+					public void onClick(DialogInterface dialog, int which) {
+						btnFromMonth.setText(monthSelection[which]);
+					}
+				}).create();
 				dialog.show();
 
 			}
@@ -572,10 +725,8 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 			@Override
 			public void onClick(View v) {
-				int selectYear = Integer.parseInt(btnFromYear.getText()
-						.toString());
-				int selectMonth = Integer.parseInt(btnFromMonth.getText()
-						.toString());
+				int selectYear = Integer.parseInt(btnFromYear.getText().toString());
+				int selectMonth = Integer.parseInt(btnFromMonth.getText().toString());
 
 				Calendar cal = Calendar.getInstance();
 				cal.set(Calendar.YEAR, selectYear);
@@ -585,15 +736,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 				final String[] date = new String[maxDate];
 				System.arraycopy(dateSelection, 0, date, 0, maxDate);
 
-				Dialog dialog = new AlertDialog.Builder(
-						V2SiteDetailActivity.this).setItems(date,
-						new DialogInterface.OnClickListener() {
+				Dialog dialog = new AlertDialog.Builder(V2SiteDetailActivity.this)
+						.setItems(date, new DialogInterface.OnClickListener() {
 
-							public void onClick(DialogInterface dialog,
-									int which) {
-								btnFromDay.setText(date[which]);
-							}
-						}).create();
+					public void onClick(DialogInterface dialog, int which) {
+						btnFromDay.setText(date[which]);
+					}
+				}).create();
 				dialog.show();
 
 			}
@@ -605,15 +754,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 			@Override
 			public void onClick(View v) {
-				Dialog dialog = new AlertDialog.Builder(
-						V2SiteDetailActivity.this).setItems(
-						hourSelection, new DialogInterface.OnClickListener() {
+				Dialog dialog = new AlertDialog.Builder(V2SiteDetailActivity.this)
+						.setItems(hourSelection, new DialogInterface.OnClickListener() {
 
-							public void onClick(DialogInterface dialog,
-									int which) {
-								btnFromHour.setText(hourSelection[which]);
-							}
-						}).create();
+					public void onClick(DialogInterface dialog, int which) {
+						btnFromHour.setText(hourSelection[which]);
+					}
+				}).create();
 				dialog.show();
 
 			}
@@ -625,15 +772,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 			@Override
 			public void onClick(View v) {
-				Dialog dialog = new AlertDialog.Builder(
-						V2SiteDetailActivity.this).setItems(
-						minuteSelection, new DialogInterface.OnClickListener() {
+				Dialog dialog = new AlertDialog.Builder(V2SiteDetailActivity.this)
+						.setItems(minuteSelection, new DialogInterface.OnClickListener() {
 
-							public void onClick(DialogInterface dialog,
-									int which) {
-								btnFromMinute.setText(minuteSelection[which]);
-							}
-						}).create();
+					public void onClick(DialogInterface dialog, int which) {
+						btnFromMinute.setText(minuteSelection[which]);
+					}
+				}).create();
 				dialog.show();
 
 			}
@@ -645,15 +790,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 			@Override
 			public void onClick(View v) {
-				Dialog dialog = new AlertDialog.Builder(
-						V2SiteDetailActivity.this).setItems(
-						secondSelection, new DialogInterface.OnClickListener() {
+				Dialog dialog = new AlertDialog.Builder(V2SiteDetailActivity.this)
+						.setItems(secondSelection, new DialogInterface.OnClickListener() {
 
-							public void onClick(DialogInterface dialog,
-									int which) {
-								btnFromSecond.setText(secondSelection[which]);
-							}
-						}).create();
+					public void onClick(DialogInterface dialog, int which) {
+						btnFromSecond.setText(secondSelection[which]);
+					}
+				}).create();
 				dialog.show();
 
 			}
@@ -664,15 +807,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 		btnToYear.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Dialog dialog = new AlertDialog.Builder(
-						V2SiteDetailActivity.this).setItems(
-						yearSelection, new DialogInterface.OnClickListener() {
+				Dialog dialog = new AlertDialog.Builder(V2SiteDetailActivity.this)
+						.setItems(yearSelection, new DialogInterface.OnClickListener() {
 
-							public void onClick(DialogInterface dialog,
-									int which) {
-								btnToYear.setText(yearSelection[which]);
-							}
-						}).create();
+					public void onClick(DialogInterface dialog, int which) {
+						btnToYear.setText(yearSelection[which]);
+					}
+				}).create();
 				dialog.show();
 
 			}
@@ -684,15 +825,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 			@Override
 			public void onClick(View v) {
-				Dialog dialog = new AlertDialog.Builder(
-						V2SiteDetailActivity.this).setItems(
-						monthSelection, new DialogInterface.OnClickListener() {
+				Dialog dialog = new AlertDialog.Builder(V2SiteDetailActivity.this)
+						.setItems(monthSelection, new DialogInterface.OnClickListener() {
 
-							public void onClick(DialogInterface dialog,
-									int which) {
-								btnToMonth.setText(monthSelection[which]);
-							}
-						}).create();
+					public void onClick(DialogInterface dialog, int which) {
+						btnToMonth.setText(monthSelection[which]);
+					}
+				}).create();
 				dialog.show();
 
 			}
@@ -704,10 +843,8 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 			@Override
 			public void onClick(View v) {
-				int selectYear = Integer.parseInt(btnToYear.getText()
-						.toString());
-				int selectMonth = Integer.parseInt(btnToMonth.getText()
-						.toString());
+				int selectYear = Integer.parseInt(btnToYear.getText().toString());
+				int selectMonth = Integer.parseInt(btnToMonth.getText().toString());
 
 				Calendar cal = Calendar.getInstance();
 				cal.set(Calendar.YEAR, selectYear);
@@ -717,15 +854,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 				final String[] date = new String[maxDate];
 				System.arraycopy(dateSelection, 0, date, 0, maxDate);
 
-				Dialog dialog = new AlertDialog.Builder(
-						V2SiteDetailActivity.this).setItems(date,
-						new DialogInterface.OnClickListener() {
+				Dialog dialog = new AlertDialog.Builder(V2SiteDetailActivity.this)
+						.setItems(date, new DialogInterface.OnClickListener() {
 
-							public void onClick(DialogInterface dialog,
-									int which) {
-								btnToDay.setText(date[which]);
-							}
-						}).create();
+					public void onClick(DialogInterface dialog, int which) {
+						btnToDay.setText(date[which]);
+					}
+				}).create();
 				dialog.show();
 
 			}
@@ -737,15 +872,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 			@Override
 			public void onClick(View v) {
-				Dialog dialog = new AlertDialog.Builder(
-						V2SiteDetailActivity.this).setItems(
-						hourSelection, new DialogInterface.OnClickListener() {
+				Dialog dialog = new AlertDialog.Builder(V2SiteDetailActivity.this)
+						.setItems(hourSelection, new DialogInterface.OnClickListener() {
 
-							public void onClick(DialogInterface dialog,
-									int which) {
-								btnToHour.setText(hourSelection[which]);
-							}
-						}).create();
+					public void onClick(DialogInterface dialog, int which) {
+						btnToHour.setText(hourSelection[which]);
+					}
+				}).create();
 				dialog.show();
 
 			}
@@ -757,15 +890,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 			@Override
 			public void onClick(View v) {
-				Dialog dialog = new AlertDialog.Builder(
-						V2SiteDetailActivity.this).setItems(
-						minuteSelection, new DialogInterface.OnClickListener() {
+				Dialog dialog = new AlertDialog.Builder(V2SiteDetailActivity.this)
+						.setItems(minuteSelection, new DialogInterface.OnClickListener() {
 
-							public void onClick(DialogInterface dialog,
-									int which) {
-								btnToMinute.setText(minuteSelection[which]);
-							}
-						}).create();
+					public void onClick(DialogInterface dialog, int which) {
+						btnToMinute.setText(minuteSelection[which]);
+					}
+				}).create();
 				dialog.show();
 
 			}
@@ -777,15 +908,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 			@Override
 			public void onClick(View v) {
-				Dialog dialog = new AlertDialog.Builder(
-						V2SiteDetailActivity.this).setItems(
-						secondSelection, new DialogInterface.OnClickListener() {
+				Dialog dialog = new AlertDialog.Builder(V2SiteDetailActivity.this)
+						.setItems(secondSelection, new DialogInterface.OnClickListener() {
 
-							public void onClick(DialogInterface dialog,
-									int which) {
-								btnToSecond.setText(secondSelection[which]);
-							}
-						}).create();
+					public void onClick(DialogInterface dialog, int which) {
+						btnToSecond.setText(secondSelection[which]);
+					}
+				}).create();
 				dialog.show();
 
 			}
@@ -796,44 +925,26 @@ public class V2SiteDetailActivity extends BaseActivity {
 	}
 
 	private void showTimeScope2Dialog() {
-		View view = View.inflate(getApplicationContext(),
-				R.layout.v2_dialog_chart_timescope2, null);
+		View view = View.inflate(getApplicationContext(), R.layout.v2_dialog_chart_timescope2, null);
 
-		ImageButton btnClose = (ImageButton) view
-				.findViewById(R.id.btn_chart_timescope2_close);
-		Button btn1Hour = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_1hour);
-		Button btn4Hours = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_4hours);
-		Button btn8Hours = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_8hours);
-		Button btnToday = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_today);
-		Button btnYesterday = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_yesterday);
-		Button btnLast3Days = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_last3days);
-		Button btnLast5Days = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_last5days);
-		Button btnThisWeek = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_thisweek);
-		Button btnLastWeek = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_lastweek);
-		Button btnLast2Weeks = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_last2weeks);
-		Button btnLast3Weeks = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_last3weeks);
-		Button btnThisMonth = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_thismonth);
-		Button btnLastMonth = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_lastmonth);
-		Button btnLast2Months = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_last2months);
-		Button btnLast3Months = (Button) view
-				.findViewById(R.id.btn_chart_timescope2_last3months);
+		ImageButton btnClose = (ImageButton) view.findViewById(R.id.btn_chart_timescope2_close);
+		Button btn1Hour = (Button) view.findViewById(R.id.btn_chart_timescope2_1hour);
+		Button btn4Hours = (Button) view.findViewById(R.id.btn_chart_timescope2_4hours);
+		Button btn8Hours = (Button) view.findViewById(R.id.btn_chart_timescope2_8hours);
+		Button btnToday = (Button) view.findViewById(R.id.btn_chart_timescope2_today);
+		Button btnYesterday = (Button) view.findViewById(R.id.btn_chart_timescope2_yesterday);
+		Button btnLast3Days = (Button) view.findViewById(R.id.btn_chart_timescope2_last3days);
+		Button btnLast5Days = (Button) view.findViewById(R.id.btn_chart_timescope2_last5days);
+		Button btnThisWeek = (Button) view.findViewById(R.id.btn_chart_timescope2_thisweek);
+		Button btnLastWeek = (Button) view.findViewById(R.id.btn_chart_timescope2_lastweek);
+		Button btnLast2Weeks = (Button) view.findViewById(R.id.btn_chart_timescope2_last2weeks);
+		Button btnLast3Weeks = (Button) view.findViewById(R.id.btn_chart_timescope2_last3weeks);
+		Button btnThisMonth = (Button) view.findViewById(R.id.btn_chart_timescope2_thismonth);
+		Button btnLastMonth = (Button) view.findViewById(R.id.btn_chart_timescope2_lastmonth);
+		Button btnLast2Months = (Button) view.findViewById(R.id.btn_chart_timescope2_last2months);
+		Button btnLast3Months = (Button) view.findViewById(R.id.btn_chart_timescope2_last3months);
 
-		AlertDialog.Builder builder = new AlertDialog.Builder(
-				V2SiteDetailActivity.this,
+		AlertDialog.Builder builder = new AlertDialog.Builder(V2SiteDetailActivity.this,
 				android.R.style.Theme_Black_NoTitleBar).setView(view);
 
 		final AlertDialog dlg = builder.create();
@@ -886,7 +997,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 			}
 
 		});
-		
+
 		btnToday.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -906,7 +1017,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 			}
 
 		});
-		
+
 		btnLast3Days.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -916,7 +1027,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 			}
 
 		});
-		
+
 		btnLast5Days.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -926,7 +1037,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 			}
 
 		});
-		
+
 		btnThisWeek.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -936,7 +1047,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 			}
 
 		});
-		
+
 		btnLastWeek.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -946,7 +1057,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 			}
 
 		});
-		
+
 		btnLast2Weeks.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -956,7 +1067,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 			}
 
 		});
-		
+
 		btnLast3Weeks.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -966,7 +1077,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 			}
 
 		});
-		
+
 		btnThisMonth.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -976,7 +1087,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 			}
 
 		});
-		
+
 		btnLastMonth.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -986,7 +1097,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 			}
 
 		});
-		
+
 		btnLast2Months.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -1007,20 +1118,19 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 		});
 
-		
 		dlg.show();
 	}
 
 	private void setChartTimePeriod(int period) {
 		chartStartTime = getStartTime(period);
 		chartEndTime = getEndTime(period);
-		//generateChart();
+		// generateChart();
 		resendMessage();
 	}
 
 	private void createChart() {
-		//chartDataset.clear();
-		//chartRenderer.removeAllRenderers();
+		// chartDataset.clear();
+		// chartRenderer.removeAllRenderers();
 		chartDataset = new XYMultipleSeriesDataset();
 		chartRenderer = new XYMultipleSeriesRenderer(3);
 		Resources resources = getResources();
@@ -1045,18 +1155,15 @@ public class V2SiteDetailActivity extends BaseActivity {
 		chartRenderer.setXLabels(5);
 		chartRenderer.setYLabels(5);
 
-		chartRenderer.setYLabelsColor(0,
-				resources.getColor(R.color.chart_color_co2));
+		chartRenderer.setYLabelsColor(0, resources.getColor(R.color.chart_color_co2));
 		chartRenderer.setYAxisAlign(Align.LEFT, 0);
 		chartRenderer.setYLabelsAlign(Align.RIGHT, 0);
 
-		chartRenderer.setYLabelsColor(1,
-				resources.getColor(R.color.chart_color_temperature));
+		chartRenderer.setYLabelsColor(1, resources.getColor(R.color.chart_color_temperature));
 		chartRenderer.setYAxisAlign(Align.RIGHT, 1);
 		chartRenderer.setYLabelsAlign(Align.RIGHT, 1);
 
-		chartRenderer.setYLabelsColor(2,
-				resources.getColor(R.color.chart_color_humidity));
+		chartRenderer.setYLabelsColor(2, resources.getColor(R.color.chart_color_humidity));
 		chartRenderer.setYAxisAlign(Align.RIGHT, 2);
 		chartRenderer.setYLabelsAlign(Align.LEFT, 2);
 
@@ -1064,10 +1171,9 @@ public class V2SiteDetailActivity extends BaseActivity {
 		chartRenderer.setPointSize(3);// 设置点的大小(图上显示的点的大小和图例中点的大小都会被设置)
 		chartRenderer.setPanEnabled(true);
 		chartRenderer.setClickEnabled(true);
-		
 
-		//chartRenderer.setShowCustomTextTargetLineY(true);
-		//chartRenderer.setFillTargetLineWithColor(true);
+		// chartRenderer.setShowCustomTextTargetLineY(true);
+		// chartRenderer.setFillTargetLineWithColor(true);
 
 		co2Series = new XYSeries(resources.getString(R.string.co2), 0);// 定义XYSeries
 		chartDataset.addSeries(co2Series);// 在XYMultipleSeriesDataset中添加XYSeries
@@ -1081,15 +1187,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 		co2Renderer.setDisplayChartValues(true);
 		co2Renderer.setChartValuesTextSize(15);
 
-		temperatureSeries = new XYSeries(
-				resources.getString(R.string.temperature), 1);// 定义XYSeries
+		temperatureSeries = new XYSeries(resources.getString(R.string.temperature), 1);// 定义XYSeries
 		chartDataset.addSeries(temperatureSeries);// 在XYMultipleSeriesDataset中添加XYSeries
 		temperatureRenderer = new XYSeriesRenderer();// 定义XYSeriesRenderer
 		chartRenderer.addSeriesRenderer(temperatureRenderer);// 将单个XYSeriesRenderer增加到XYMultipleSeriesRenderer
 		temperatureRenderer.setPointStyle(PointStyle.CIRCLE);// 点的类型是圆形
 		temperatureRenderer.setFillPoints(true);// 设置点是否实心
-		temperatureRenderer
-				.setColor(resources.getColor(R.color.chart_color_temperature));
+		temperatureRenderer.setColor(resources.getColor(R.color.chart_color_temperature));
 		temperatureRenderer.setLineWidth(3);
 
 		temperatureRenderer.setDisplayChartValues(true);
@@ -1119,7 +1223,11 @@ public class V2SiteDetailActivity extends BaseActivity {
 		String dateFormat = null;
 
 		if (chartType == Constants.ChartSettings.CHART_TYPE_AGGRAGATION) {
-			if (chartGranularity == Constants.ChartSettings.GRANULARITY_HOUR) {
+			if (chartGranularity == Constants.ChartSettings.GRANULARITY_SECONDS) {
+				dateFormat = "yyyy/MM/dd-HH:mm:ss";
+			} else if (chartGranularity == Constants.ChartSettings.GRANULARITY_QUARTER) {
+				dateFormat = "yyyy/MM/dd-HH:mm:ss";
+			} else if (chartGranularity == Constants.ChartSettings.GRANULARITY_HOUR) {
 				dateFormat = "yyyy/MM/dd-HH:mm:ss";
 			} else if (chartGranularity == Constants.ChartSettings.GRANULARITY_HOURS) {
 				dateFormat = "yyyy/MM/dd-HH:mm:ss";
@@ -1134,34 +1242,34 @@ public class V2SiteDetailActivity extends BaseActivity {
 			dateFormat = "HH:mm:ss";
 		}
 
-		chartView = IOTChartFactory.getIOTChartView(this, chartDataset,
-				chartRenderer, dateFormat, new String[] { "ppm", "℃", "%" });
+		chartView = IOTChartFactory.getIOTChartView(this, chartDataset, chartRenderer, dateFormat,
+				new String[] { "ppm", "℃", "%" });
 		chartView.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				SeriesSelection seriesSelection = chartView.getCurrentSeriesAndPoint();
-				if(seriesSelection != null){
+				if (seriesSelection != null) {
 					int index = seriesSelection.getSeriesIndex();
 					String info;
-					if(index == 0){
+					if (index == 0) {
 						info = "CO2:";
-					}else if(index == 1){
+					} else if (index == 1) {
 						info = "Temperature:";
-					}else if(index == 2){
+					} else if (index == 2) {
 						info = "Humidity:";
-					}else{
+					} else {
 						info = "Unknown";
 					}
-					
-					Toast.makeText(V2SiteDetailActivity.this, info + seriesSelection.getValue(), Toast.LENGTH_SHORT).show();
+
+					Toast.makeText(V2SiteDetailActivity.this, info + seriesSelection.getValue(), Toast.LENGTH_SHORT)
+							.show();
 				}
 			}
 		});
-		
+
 		chartLayout.removeAllViews();
-		chartLayout.addView(chartView, new LayoutParams(
-				LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
+		chartLayout.addView(chartView, new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
 	}
 
 	private void updateChartData() {
@@ -1179,7 +1287,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 		 * chartRenderer.addYTextLabel(breachThreshold.getCo2UpperBound(),
 		 * "breach", 0, getResources().getColor(R.color.status_alarm));
 		 */
-		
+
 		co2Series.clear();
 		temperatureSeries.clear();
 		humiditySeries.clear();
@@ -1295,13 +1403,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 			chartRC.cancel();
 		}
 
-		//Message msg = new Message();
-		//msg.what = Constants.MessageKey.MESSAGE_GET_CHART_DATA;
+		// Message msg = new Message();
+		// msg.what = Constants.MessageKey.MESSAGE_GET_CHART_DATA;
 		// handler.sendMessageDelayed(msg, 2000);
 		handler.sendEmptyMessage(Constants.MessageKey.MESSAGE_GET_CHART_DATA);
 
 	}
-
+	/*
 	private String getChartTitle() {
 		if (chartType == Constants.ChartSettings.CHART_TYPE_AGGRAGATION) {
 			if (chartGranularity == Constants.ChartSettings.GRANULARITY_HOUR) {
@@ -1319,7 +1427,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 			return "即時資料(資料範圍:" + chartTimeDuration + "分鐘)";
 		}
 	}
-
+	*/
 	private Date getStartTime(int preDefinedTimePeriod) {
 		Date result = null;
 		switch (preDefinedTimePeriod) {
@@ -1606,8 +1714,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 			return result;
 		}
 	}
-	
-	
+
 	private void showProgressDialog() {
 		progressDialog = ProgressDialog.show(this, "", getString(R.string.chart_waiting), true);
 		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -1624,35 +1731,26 @@ public class V2SiteDetailActivity extends BaseActivity {
 	private boolean sendQueryChartDataRequest(String deviceID) {
 		if (chartType == Constants.ChartSettings.CHART_TYPE_REALTIME) {
 			int pageSize = 12 * chartTimeDuration; // 15s for each type sample,
-													// so 12 samples for 3
-													// types in 1 min
 			if (!isChartRequestHandling) {
-				sendQueryRealtimeChartDataRequest(deviceID, pageSize);
+				sendQueryCurrentChartDataRequest(deviceID, pageSize);
 			} else {
 				return false;
 			}
 		} else if (chartType == Constants.ChartSettings.CHART_TYPE_AGGRAGATION) {
-			if (chartGranularity == Constants.ChartSettings.GRANULARITY_MINUTE) {
-				sendQuery10MinutesAggrChartDataRequest(deviceID, chartStartTime,
-						chartEndTime);
+			if (chartGranularity == Constants.ChartSettings.GRANULARITY_SECONDS) {
+				sendQuery15SecondsChartDataRequest(deviceID, chartStartTime, chartEndTime);
 			} else if (chartGranularity == Constants.ChartSettings.GRANULARITY_QUARTER) {
-				sendQuery1QuarterAggrChartDataRequest(deviceID, chartStartTime,
-						chartEndTime);
+				sendQuery1QuarterAggrChartDataRequest(deviceID, chartStartTime, chartEndTime);
 			} else if (chartGranularity == Constants.ChartSettings.GRANULARITY_HOUR) {
-				sendQuery1HourAggrChartDataRequest(deviceID, chartStartTime,
-						chartEndTime);
+				sendQuery1HourAggrChartDataRequest(deviceID, chartStartTime, chartEndTime);
 			} else if (chartGranularity == Constants.ChartSettings.GRANULARITY_HOURS) {
-				sendQuery8HoursAggrChartDataRequest(deviceID, chartStartTime,
-						chartEndTime);
+				sendQuery8HoursAggrChartDataRequest(deviceID, chartStartTime, chartEndTime);
 			} else if (chartGranularity == Constants.ChartSettings.GRANULARITY_DAY) {
-				sendQueryDayAggrChartDataRequest(deviceID, chartStartTime,
-						chartEndTime);
+				sendQueryDayAggrChartDataRequest(deviceID, chartStartTime, chartEndTime);
 			} else if (chartGranularity == Constants.ChartSettings.GRANULARITY_WEEK) {
-				sendQueryWeekAggrChartDataRequest(deviceID, chartStartTime,
-						chartEndTime);
+				sendQueryWeekAggrChartDataRequest(deviceID, chartStartTime, chartEndTime);
 			} else if (chartGranularity == Constants.ChartSettings.GRANULARITY_MONTH) {
-				sendQueryMonthAggrChartDataRequest(deviceID, chartStartTime,
-						chartEndTime);
+				sendQueryMonthAggrChartDataRequest(deviceID, chartStartTime, chartEndTime);
 			} else {
 				return false;
 			}
@@ -1660,14 +1758,12 @@ public class V2SiteDetailActivity extends BaseActivity {
 		return true;
 	}
 
-	private void sendQueryRealtimeChartDataRequest(String deviceID, int pageSize) {
+	private void sendQueryCurrentChartDataRequest(String deviceID, int pageSize) {
 		isChartRequestHandling = true;
 
-		HttpRequest request = new NoneAuthedHttpRequest(
-				new HttpConfig.GetHttpConfig(),
+		HttpRequest request = new NoneAuthedHttpRequest(new HttpConfig.GetHttpConfig(),
 				Constants.ServerAPIURI.GET_SAMPLE_DATA);
-		String sessionID = ServiceContainer.getInstance().getSessionService()
-				.getSessionID();
+		String sessionID = ServiceContainer.getInstance().getSessionService().getSessionID();
 		request.addParameter("dataType", "xml");
 		request.addParameter("__session_id", sessionID);
 		request.addParameter("__page_no", "1");
@@ -1676,216 +1772,174 @@ public class V2SiteDetailActivity extends BaseActivity {
 		request.addParameter("__group_by", "did,name");
 		request.addParameter("__sort", "-id");
 		request.addParameter("did[0]", deviceID);
-		GetRealtimeChartDataListener l = new GetRealtimeChartDataListener(
-				deviceID);
+		GetRealtimeChartDataListener l = new GetRealtimeChartDataListener(deviceID);
 
 		ServiceContainer.getInstance().getHttpHandler().doRequest(request, l);
 	}
 
-	private void sendQuery10MinutesAggrChartDataRequest(String deviceID,
-			Date startTime, Date endTime) {
+	private void sendQuery15SecondsChartDataRequest(String deviceID, Date startTime, Date endTime) {
 
-		String from = ReportUtil.getServerTimeHourString(startTime);
-		String to = ReportUtil.getServerTimeHourString(endTime);
+		String from = ReportUtil.getServerTimeString(startTime);
+		String to = ReportUtil.getServerTimeString(endTime);
 
-		HttpRequest request = new NoneAuthedHttpRequest(
-				new HttpConfig.GetHttpConfig(),
-				Constants.ServerAPIURI.GET_HOUR_AGG_DATA);
-		String sessionID = ServiceContainer.getInstance().getSessionService()
-				.getSessionID();
+		HttpRequest request = new NoneAuthedHttpRequest(new HttpConfig.GetHttpConfig(),
+				Constants.ServerAPIURI.GET_SAMPLE_DATA);
+		String sessionID = ServiceContainer.getInstance().getSessionService().getSessionID();
+		request.addParameter("dataType", "xml");
+		request.addParameter("__session_id", sessionID);
+		request.addParameter("__page_no", "1");
+		request.addParameter("__column", "name,value,t");
+		request.addParameter("__group_by", "did,name");
+		request.addParameter("__sort", "-id");
+		request.addParameter("did[0]", deviceID);
+		request.addParameter("t__from", from);
+		request.addParameter("t__to", to);
+		request.addParameter("did%5B0%5D", deviceID);
+
+		Get15SecondsChartDataListener l = new Get15SecondsChartDataListener(deviceID, from, to);
+
+		ServiceContainer.getInstance().getHttpHandler().doRequest(request, l);
+	}
+
+	private void sendQuery1QuarterAggrChartDataRequest(String deviceID, Date startTime, Date endTime) {
+
+		String from = ReportUtil.getServerTimeString(startTime);
+		String to = ReportUtil.getServerTimeString(endTime);
+
+		HttpRequest request = new NoneAuthedHttpRequest(new HttpConfig.GetHttpConfig(),
+				Constants.ServerAPIURI.GET_QUARTER_AGG_DATA);
+		String sessionID = ServiceContainer.getInstance().getSessionService().getSessionID();
 		request.addParameter("dataType", "xml");
 		request.addParameter("__session_id", sessionID);
 		request.addParameter("__page_no", "1");
 		request.addParameter("__page_size", "10000");
-		request.addParameter("__column",
-				"did%2Csensor%2Cname%2Cvalue%2Chour_in_epoch");
-		request.addParameter("__group_by",
-				"did%2Csensor%2Cname%2Chour_in_epoch");
+		request.addParameter("__column", "did%2Csensor%2Cname%2Cvalue%2Chour_in_epoch");
+		request.addParameter("__group_by", "did%2Csensor%2Cname%2Chour_in_epoch");
 		request.addParameter("__sort", "-id");
-		request.addParameter("hour_in_epoch__from", from);
-		request.addParameter("hour_in_epoch__to", to);
+		request.addParameter("quarter_in_epoch__from", from);
+		request.addParameter("quarter_in_epoch__to", to);
 		request.addParameter("did%5B0%5D", deviceID);
-		GetAggrChartDataListener l = new GetAggrChartDataListener(deviceID,
-				from, to);
+		GetAggrChartDataListener l = new GetAggrChartDataListener(deviceID, from, to);
 
 		ServiceContainer.getInstance().getHttpHandler().doRequest(request, l);
 	}
-	
-	private void sendQuery1QuarterAggrChartDataRequest(String deviceID,
-			Date startTime, Date endTime) {
+
+	private void sendQuery1HourAggrChartDataRequest(String deviceID, Date startTime, Date endTime) {
 
 		String from = ReportUtil.getServerTimeHourString(startTime);
 		String to = ReportUtil.getServerTimeHourString(endTime);
 
-		HttpRequest request = new NoneAuthedHttpRequest(
-				new HttpConfig.GetHttpConfig(),
+		HttpRequest request = new NoneAuthedHttpRequest(new HttpConfig.GetHttpConfig(),
 				Constants.ServerAPIURI.GET_HOUR_AGG_DATA);
-		String sessionID = ServiceContainer.getInstance().getSessionService()
-				.getSessionID();
+		String sessionID = ServiceContainer.getInstance().getSessionService().getSessionID();
 		request.addParameter("dataType", "xml");
 		request.addParameter("__session_id", sessionID);
 		request.addParameter("__page_no", "1");
 		request.addParameter("__page_size", "10000");
-		request.addParameter("__column",
-				"did%2Csensor%2Cname%2Cvalue%2Chour_in_epoch");
-		request.addParameter("__group_by",
-				"did%2Csensor%2Cname%2Chour_in_epoch");
+		request.addParameter("__column", "did%2Csensor%2Cname%2Cvalue%2Chour_in_epoch");
+		request.addParameter("__group_by", "did%2Csensor%2Cname%2Chour_in_epoch");
 		request.addParameter("__sort", "-id");
 		request.addParameter("hour_in_epoch__from", from);
 		request.addParameter("hour_in_epoch__to", to);
 		request.addParameter("did%5B0%5D", deviceID);
-		GetAggrChartDataListener l = new GetAggrChartDataListener(deviceID,
-				from, to);
-
-		ServiceContainer.getInstance().getHttpHandler().doRequest(request, l);
-	}
-	
-	private void sendQuery1HourAggrChartDataRequest(String deviceID,
-			Date startTime, Date endTime) {
-
-		String from = ReportUtil.getServerTimeHourString(startTime);
-		String to = ReportUtil.getServerTimeHourString(endTime);
-
-		HttpRequest request = new NoneAuthedHttpRequest(
-				new HttpConfig.GetHttpConfig(),
-				Constants.ServerAPIURI.GET_HOUR_AGG_DATA);
-		String sessionID = ServiceContainer.getInstance().getSessionService()
-				.getSessionID();
-		request.addParameter("dataType", "xml");
-		request.addParameter("__session_id", sessionID);
-		request.addParameter("__page_no", "1");
-		request.addParameter("__page_size", "10000");
-		request.addParameter("__column",
-				"did%2Csensor%2Cname%2Cvalue%2Chour_in_epoch");
-		request.addParameter("__group_by",
-				"did%2Csensor%2Cname%2Chour_in_epoch");
-		request.addParameter("__sort", "-id");
-		request.addParameter("hour_in_epoch__from", from);
-		request.addParameter("hour_in_epoch__to", to);
-		request.addParameter("did%5B0%5D", deviceID);
-		GetAggrChartDataListener l = new GetAggrChartDataListener(deviceID,
-				from, to);
+		GetAggrChartDataListener l = new GetAggrChartDataListener(deviceID, from, to);
 
 		ServiceContainer.getInstance().getHttpHandler().doRequest(request, l);
 	}
 
-	private void sendQuery8HoursAggrChartDataRequest(String deviceID,
-			Date startTime, Date endTime) {
+	private void sendQuery8HoursAggrChartDataRequest(String deviceID, Date startTime, Date endTime) {
 
 		String from = ReportUtil.getServerTimeHourString(startTime);
 		String to = ReportUtil.getServerTimeHourString(endTime);
 
-		HttpRequest request = new NoneAuthedHttpRequest(
-				new HttpConfig.GetHttpConfig(),
+		HttpRequest request = new NoneAuthedHttpRequest(new HttpConfig.GetHttpConfig(),
 				Constants.ServerAPIURI.GET_HOURS_AGG_DATA);
-		String sessionID = ServiceContainer.getInstance().getSessionService()
-				.getSessionID();
+		String sessionID = ServiceContainer.getInstance().getSessionService().getSessionID();
 		request.addParameter("dataType", "xml");
 		request.addParameter("__session_id", sessionID);
 		request.addParameter("__page_no", "1");
 		request.addParameter("__page_size", "10000");
-		request.addParameter("__column",
-				"did%2Csensor%2Cname%2Cvalue%2Chours_in_epoch");
-		request.addParameter("__group_by",
-				"did%2Csensor%2Cname%2Chours_in_epoch");
+		request.addParameter("__column", "did%2Csensor%2Cname%2Cvalue%2Chours_in_epoch");
+		request.addParameter("__group_by", "did%2Csensor%2Cname%2Chours_in_epoch");
 		request.addParameter("__sort", "-id");
 		request.addParameter("hours_in_epoch__from", from);
 		request.addParameter("hours_in_epoch__to", to);
 		request.addParameter("did%5B0%5D", deviceID);
-		GetAggrChartDataListener l = new GetAggrChartDataListener(deviceID,
-				from, to);
+		GetAggrChartDataListener l = new GetAggrChartDataListener(deviceID, from, to);
 
 		ServiceContainer.getInstance().getHttpHandler().doRequest(request, l);
 	}
 
-	private void sendQueryDayAggrChartDataRequest(String deviceID,
-			Date startTime, Date endTime) {
+	private void sendQueryDayAggrChartDataRequest(String deviceID, Date startTime, Date endTime) {
 
 		String from = ReportUtil.getServerTimeDayString(startTime);
 		String to = ReportUtil.getServerTimeDayString(endTime);
 
-		HttpRequest request = new NoneAuthedHttpRequest(
-				new HttpConfig.GetHttpConfig(),
+		HttpRequest request = new NoneAuthedHttpRequest(new HttpConfig.GetHttpConfig(),
 				Constants.ServerAPIURI.GET_DAY_AGG_DATA);
-		String sessionID = ServiceContainer.getInstance().getSessionService()
-				.getSessionID();
+		String sessionID = ServiceContainer.getInstance().getSessionService().getSessionID();
 		request.addParameter("dataType", "xml");
 		request.addParameter("__session_id", sessionID);
 		request.addParameter("__page_no", "1");
 		request.addParameter("__page_size", "10000");
-		request.addParameter("__column",
-				"did%2Csensor%2Cname%2Cvalue%2Cday_in_epoch");
+		request.addParameter("__column", "did%2Csensor%2Cname%2Cvalue%2Cday_in_epoch");
 		request.addParameter("__group_by", "did%2Csensor%2Cname%2Cday_in_epoch");
 		request.addParameter("__sort", "-id");
 		request.addParameter("day_in_epoch__from", from);
 		request.addParameter("day_in_epoch__to", to);
 		request.addParameter("did%5B0%5D", deviceID);
-		GetAggrChartDataListener l = new GetAggrChartDataListener(deviceID,
-				from, to);
+		GetAggrChartDataListener l = new GetAggrChartDataListener(deviceID, from, to);
 
 		ServiceContainer.getInstance().getHttpHandler().doRequest(request, l);
 	}
 
-	private void sendQueryWeekAggrChartDataRequest(String deviceID,
-			Date startTime, Date endTime) {
+	private void sendQueryWeekAggrChartDataRequest(String deviceID, Date startTime, Date endTime) {
 
 		String from = ReportUtil.getServerTimeDayString(startTime);
 		String to = ReportUtil.getServerTimeDayString(endTime);
 
-		HttpRequest request = new NoneAuthedHttpRequest(
-				new HttpConfig.GetHttpConfig(),
+		HttpRequest request = new NoneAuthedHttpRequest(new HttpConfig.GetHttpConfig(),
 				Constants.ServerAPIURI.GET_WEEK_AGG_DATA);
-		String sessionID = ServiceContainer.getInstance().getSessionService()
-				.getSessionID();
+		String sessionID = ServiceContainer.getInstance().getSessionService().getSessionID();
 		request.addParameter("dataType", "xml");
 		request.addParameter("__session_id", sessionID);
 		request.addParameter("__page_no", "1");
 		request.addParameter("__page_size", "10000");
-		request.addParameter("__column",
-				"did%2Csensor%2Cname%2Cvalue%2Cweek_in_epoch");
-		request.addParameter("__group_by",
-				"did%2Csensor%2Cname%2Cweek_in_epoch");
+		request.addParameter("__column", "did%2Csensor%2Cname%2Cvalue%2Cweek_in_epoch");
+		request.addParameter("__group_by", "did%2Csensor%2Cname%2Cweek_in_epoch");
 		request.addParameter("__sort", "-id");
 		request.addParameter("week_in_epoch__from", from);
 		request.addParameter("week_in_epoch__to", to);
 		request.addParameter("did%5B0%5D", deviceID);
-		GetAggrChartDataListener l = new GetAggrChartDataListener(deviceID,
-				from, to);
+		GetAggrChartDataListener l = new GetAggrChartDataListener(deviceID, from, to);
 
 		ServiceContainer.getInstance().getHttpHandler().doRequest(request, l);
 	}
 
-	private void sendQueryMonthAggrChartDataRequest(String deviceID,
-			Date startTime, Date endTime) {
+	private void sendQueryMonthAggrChartDataRequest(String deviceID, Date startTime, Date endTime) {
 
 		String from = ReportUtil.getServerTimeDayString(startTime);
 		String to = ReportUtil.getServerTimeDayString(endTime);
 
-		HttpRequest request = new NoneAuthedHttpRequest(
-				new HttpConfig.GetHttpConfig(),
+		HttpRequest request = new NoneAuthedHttpRequest(new HttpConfig.GetHttpConfig(),
 				Constants.ServerAPIURI.GET_MONTH_AGG_DATA);
-		String sessionID = ServiceContainer.getInstance().getSessionService()
-				.getSessionID();
+		String sessionID = ServiceContainer.getInstance().getSessionService().getSessionID();
 		request.addParameter("dataType", "xml");
 		request.addParameter("__session_id", sessionID);
 		request.addParameter("__page_no", "1");
 		request.addParameter("__page_size", "10000");
-		request.addParameter("__column",
-				"did%2Csensor%2Cname%2Cvalue%2Cmonth_in_epoch");
-		request.addParameter("__group_by",
-				"did%2Csensor%2Cname%2Cmonth_in_epoch");
+		request.addParameter("__column", "did%2Csensor%2Cname%2Cvalue%2Cmonth_in_epoch");
+		request.addParameter("__group_by", "did%2Csensor%2Cname%2Cmonth_in_epoch");
 		request.addParameter("__sort", "-id");
 		request.addParameter("month_in_epoch__from", from);
 		request.addParameter("month_in_epoch__to", to);
 		request.addParameter("did%5B0%5D", deviceID);
-		GetAggrChartDataListener l = new GetAggrChartDataListener(deviceID,
-				from, to);
+		GetAggrChartDataListener l = new GetAggrChartDataListener(deviceID, from, to);
 
 		ServiceContainer.getInstance().getHttpHandler().doRequest(request, l);
 	}
 
-	private class GetRealtimeChartDataListener implements
-			RequestListener<List<IOTSampleData>> {
+	private class GetRealtimeChartDataListener implements RequestListener<List<IOTSampleData>> {
 		private RequestControl control;
 		private String deviceID;
 
@@ -1903,10 +1957,8 @@ public class V2SiteDetailActivity extends BaseActivity {
 		@Override
 		public void onRequestResult(final List<IOTSampleData> result) {
 			IOTLog.d("GetRealtimeChartDataListener",
-					"debuginfo(CHART_DATA) - onRequestResult: receive response for request:"
-							+ deviceID);
-			if (currentSite != null
-					&& currentSite.getDevice().getDeviceID().equals(deviceID)) {
+					"debuginfo(CHART_DATA) - onRequestResult: receive response for request:" + deviceID);
+			if (currentSite != null && currentSite.getDevice().getDeviceID().equals(deviceID)) {
 				Message msg = new Message();
 				msg.what = Constants.MessageKey.MESSAGE_UPDATE_CHART_DATA;
 				msg.obj = result;
@@ -1938,33 +1990,80 @@ public class V2SiteDetailActivity extends BaseActivity {
 			isChartRequestHandling = false;
 			chartRC = null;
 
-			IOTLog.d(
-					"GetRealtimeChartDataListener",
+			IOTLog.d("GetRealtimeChartDataListener",
 					"debuginfo(CHART_DATA) - onRequestComplete: set isChartRequestHandling is false");
 
 			Message msg = new Message();
 			msg.what = Constants.MessageKey.MESSAGE_GET_CHART_DATA;
 
-			int refreshTime = (Integer) ServiceContainer
-					.getInstance()
-					.getSessionService()
-					.getSessionValue(
-							Constants.SessionKey.REALTIME_DATA_MONITOR_REFRESH_TIME,
-							30);
-			IOTLog.d(
-					"GetRealtimeChartDataListener",
-					"debuginfo(CHART_DATA) - onRequestComplete: send message MESSAGE_GET_CHART_DATA for "
-							+ deviceID
-							+ " with deplay time:"
-							+ refreshTime
-							+ "s");
+			int refreshTime = (Integer) ServiceContainer.getInstance().getSessionService()
+					.getSessionValue(Constants.SessionKey.REALTIME_DATA_MONITOR_REFRESH_TIME, 30);
+			IOTLog.d("GetRealtimeChartDataListener",
+					"debuginfo(CHART_DATA) - onRequestComplete: send message MESSAGE_GET_CHART_DATA for " + deviceID
+							+ " with deplay time:" + refreshTime + "s");
 			handler.sendMessageDelayed(msg, refreshTime * 1000);
 
 		}
 	}
 
-	private class GetAggrChartDataListener implements
-			RequestListener<Map<String, IOTMonitorData>> {
+	private class Get15SecondsChartDataListener implements RequestListener<List<IOTSampleData>> {
+		private RequestControl control;
+		private String deviceID;
+		private String from;
+		private String to;
+
+		public Get15SecondsChartDataListener(String deviceID, String from, String to) {
+			this.deviceID = deviceID;
+			this.from = from;
+			this.to = to;
+		}
+
+		@Override
+		public void onRequestCancelled() {
+			if (control != null)
+				control.cancel();
+
+		}
+
+		@Override
+		public void onRequestResult(final List<IOTSampleData> result) {
+			IOTLog.d("Get15SecondsChartDataListener",
+					"debuginfo(CHART_DATA) - onRequestResult: receive response for request:" + deviceID);
+			if (currentSite != null && currentSite.getDevice().getDeviceID().equals(deviceID)) {
+				Message msg = new Message();
+				msg.what = Constants.MessageKey.MESSAGE_UPDATE_CHART_DATA;
+				msg.obj = result;
+				handler.sendMessage(msg);
+			}
+
+		}
+
+		@Override
+		public void onRequestGetControl(RequestControl control) {
+			this.control = control;
+			chartRC = control;
+		}
+
+		@Override
+		public void onRequestStart() {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void onRequestError(Exception e) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void onRequestComplete() {
+			chartRC = null;
+
+		}
+	}
+
+	private class GetAggrChartDataListener implements RequestListener<Map<String, IOTMonitorData>> {
 		private RequestControl control;
 		private String deviceID;
 		private String from;
@@ -1986,12 +2085,10 @@ public class V2SiteDetailActivity extends BaseActivity {
 		@Override
 		public void onRequestResult(final Map<String, IOTMonitorData> result) {
 			IOTLog.d("GetAggrChartDataListener",
-					"debuginfo(CHART_DATA) - onRequestResult: receive response for request:"
-							+ deviceID);
+					"debuginfo(CHART_DATA) - onRequestResult: receive response for request:" + deviceID);
 			final List<IOTSampleData> chartData = convertToChartData(result);
 
-			if (currentSite != null
-					&& currentSite.getDevice().getDeviceID().equals(deviceID)) {
+			if (currentSite != null && currentSite.getDevice().getDeviceID().equals(deviceID)) {
 				Message msg = new Message();
 				msg.what = Constants.MessageKey.MESSAGE_UPDATE_CHART_DATA;
 				msg.obj = chartData;
@@ -2024,8 +2121,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 		}
 	}
 
-	private List<IOTSampleData> convertToChartData(
-			Map<String, IOTMonitorData> result) {
+	private List<IOTSampleData> convertToChartData(Map<String, IOTMonitorData> result) {
 		List<IOTSampleData> chartData = new ArrayList<IOTSampleData>();
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -2044,14 +2140,10 @@ public class V2SiteDetailActivity extends BaseActivity {
 				e.printStackTrace();
 			}
 			if (time != null) {
-				IOTSampleData sample1 = new IOTSampleData(
-						IOTSampleData.IOTSampleDataType.CO2, time, co2);
-				IOTSampleData sample2 = new IOTSampleData(
-						IOTSampleData.IOTSampleDataType.TEMPERATURE, time,
+				IOTSampleData sample1 = new IOTSampleData(IOTSampleData.IOTSampleDataType.CO2, time, co2);
+				IOTSampleData sample2 = new IOTSampleData(IOTSampleData.IOTSampleDataType.TEMPERATURE, time,
 						temperature);
-				IOTSampleData sample3 = new IOTSampleData(
-						IOTSampleData.IOTSampleDataType.HUMIDITY, time,
-						humidity);
+				IOTSampleData sample3 = new IOTSampleData(IOTSampleData.IOTSampleDataType.HUMIDITY, time, humidity);
 
 				chartData.add(sample1);
 				chartData.add(sample2);
