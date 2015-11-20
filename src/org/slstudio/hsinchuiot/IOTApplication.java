@@ -60,7 +60,7 @@ public class IOTApplication extends Application {
 			String logFilePath = logDirPath + "iot.log";
 			checkAndCreateLogFolder(logDirPath);
 			logConfigurator.setFileName(logFilePath);
-			logConfigurator.setRootLevel(Level.INFO);
+			logConfigurator.setRootLevel(Level.DEBUG);
 			// logConfigurator.setLevel("org.apache", Level.ERROR);
 			logConfigurator.setFilePattern("%d %-5p [%c{2}]-[%L] %m%n");
 			logConfigurator.setUseFileAppender(true);
@@ -68,7 +68,8 @@ public class IOTApplication extends Application {
 			logConfigurator.setMaxBackupSize(7);
 			logConfigurator.setImmediateFlush(true);
 			logConfigurator.configure();
-			IOTLog.f("App", "AD App start...");
+			
+			IOTLog.f("IOTApplication", "IOT App start...");
 
 			if (Environment.getExternalStorageDirectory() != null
 					&& Environment.getExternalStorageDirectory().exists()) {

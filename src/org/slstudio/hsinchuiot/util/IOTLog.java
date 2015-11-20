@@ -1,14 +1,14 @@
 package org.slstudio.hsinchuiot.util;
 
-import java.util.logging.Logger;
 
+import org.apache.log4j.Logger;
 import org.slstudio.hsinchuiot.AppConfig;
 
 import android.util.Log;
 
 public final class IOTLog {
 	private static final String PREFIX = "IOT-";
-
+	
 	public static void v(String tag, String msg) {
 		if (!AppConfig.DEBUG) {
 			return;
@@ -62,8 +62,9 @@ public final class IOTLog {
 
 	public static void f(String tag, String msg) {
 		try {
-			Logger log = Logger.getLogger(tag);
-			log.info(msg);
+			Logger	fileLogger = Logger.getLogger(tag);
+			
+			fileLogger.info(msg);		
 		} catch (Exception e) {
 
 		}

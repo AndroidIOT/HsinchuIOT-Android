@@ -36,9 +36,9 @@ public class GCMPushService {
 			
 			if (regID.equals("")) {
 				GCMRegistrar.register(context, AppConfig.GCM_SENDER_ID);
-				IOTLog.d("GSMPushService", "GCM registered with senderID");
+				IOTLog.f("GSMPushService", "GCM registered with senderID");
 			} else {
-				IOTLog.d("GSMPushService", "GCM already registered with ID:" + regID);
+				IOTLog.f("GSMPushService", "GCM already registered with ID:" + regID);
 				if(!GCMRegistrar.isRegisteredOnServer(context)){
 					registerToServer(regID);
 				}
@@ -46,6 +46,7 @@ public class GCMPushService {
 			
 		} catch (Exception exp) {
 			IOTLog.e("GSMPushService", "GSM register failed:" + exp.getMessage(), exp);
+			IOTLog.f("GSMPushService", "GSM register failed:" + exp);
 			throw new IOTException(-2, context.getString(R.string.error_message_gcm_register_failed));
 		}
 	}
@@ -71,7 +72,7 @@ public class GCMPushService {
 		}
 		
 		serverRegister.register(sessionID, loginUser.getLoginName(), regID, deviceUUID.toString());
-		
+		IOTLog.f("GSMPushService", "GCM registered to server, sessionID:" + sessionID +",username:" + loginUser.getLoginName() + ",regID:" + regID +",deviceID:" + deviceUUID.toString());
 	}
 
 }
