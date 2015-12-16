@@ -16,6 +16,7 @@ public class IOTSampleDataListParser  extends XmlResponseParser<List<IOTSampleDa
 
 	public static final String NAME_CO2 = "CO2";
 	public static final String NAME_TEMPERATURE = "Temp";
+	public static final String NAME_TEMPERATURE_FULLNAME = "Temperature";
 	public static final String NAME_HUMIDITY = "Humidity";
 	
 	@Override
@@ -37,6 +38,8 @@ public class IOTSampleDataListParser  extends XmlResponseParser<List<IOTSampleDa
 			if(name.equalsIgnoreCase(NAME_CO2)){
 				data.setType(IOTSampleData.IOTSampleDataType.CO2);
 			}else if(name.equalsIgnoreCase(NAME_TEMPERATURE)){
+				data.setType(IOTSampleData.IOTSampleDataType.TEMPERATURE);
+			}else if(name.equalsIgnoreCase(NAME_TEMPERATURE_FULLNAME)){
 				data.setType(IOTSampleData.IOTSampleDataType.TEMPERATURE);
 			}else if(name.equalsIgnoreCase(NAME_HUMIDITY)){
 				data.setType(IOTSampleData.IOTSampleDataType.HUMIDITY);

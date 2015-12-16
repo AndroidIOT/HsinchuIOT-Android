@@ -10,6 +10,7 @@ public class IOTMonitorDataParser  extends XmlResponseParser<IOTMonitorData> {
 
 	public static final String NAME_CO2 = "CO2";
 	public static final String NAME_TEMPERATURE = "Temp";
+	public static final String NAME_TEMPERATURE_FULLNAME = "Temperature";
 	public static final String NAME_HUMIDITY = "Humidity";
 	
 	@Override
@@ -26,6 +27,8 @@ public class IOTMonitorDataParser  extends XmlResponseParser<IOTMonitorData> {
 			if(name.equalsIgnoreCase(NAME_CO2)){
 				result.setCo2(Float.parseFloat(value));
 			}else if(name.equalsIgnoreCase(NAME_TEMPERATURE)){
+				result.setTemperature(Float.parseFloat(value));
+			}else if(name.equalsIgnoreCase(NAME_TEMPERATURE_FULLNAME)){
 				result.setTemperature(Float.parseFloat(value));
 			}else if(name.equalsIgnoreCase(NAME_HUMIDITY)){
 				result.setHumidity(Float.parseFloat(value));

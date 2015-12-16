@@ -13,6 +13,7 @@ public class IOTAggregationDataParser  extends XmlResponseParser<Map<String,IOTM
 
 	public static final String NAME_CO2 = "CO2";
 	public static final String NAME_TEMPERATURE = "Temp";
+	public static final String NAME_TEMPERATURE_FULLNAME = "Temperature";
 	public static final String NAME_HUMIDITY = "Humidity";
 	
 	@Override
@@ -52,6 +53,8 @@ public class IOTAggregationDataParser  extends XmlResponseParser<Map<String,IOTM
 				if(name.equalsIgnoreCase(NAME_CO2)){
 					d.setCo2(Float.parseFloat(value));
 				}else if(name.equalsIgnoreCase(NAME_TEMPERATURE)){
+					d.setTemperature(Float.parseFloat(value));
+				}else if(name.equalsIgnoreCase(NAME_TEMPERATURE_FULLNAME)){
 					d.setTemperature(Float.parseFloat(value));
 				}else if(name.equalsIgnoreCase(NAME_HUMIDITY)){
 					d.setHumidity(Float.parseFloat(value));

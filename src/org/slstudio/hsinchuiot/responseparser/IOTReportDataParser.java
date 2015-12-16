@@ -10,6 +10,7 @@ public class IOTReportDataParser extends XmlResponseParser<IOTReportData> {
 
 	public static final String NAME_CO2 = "CO2";
 	public static final String NAME_TEMPERATURE = "Temp";
+	public static final String NAME_TEMPERATURE_FULLNAME = "Temperature";
 	public static final String NAME_HUMIDITY = "Humidity";
 	@Override
 	public IOTReportData parse(Document doc) throws IOTException {
@@ -30,6 +31,10 @@ public class IOTReportDataParser extends XmlResponseParser<IOTReportData> {
 				result.setMaxValueCO2(Float.parseFloat(maxValue));
 				result.setMinValueCO2(Float.parseFloat(minValue));
 			}else if(name.equalsIgnoreCase(NAME_TEMPERATURE)){
+				result.setAverageValueTemperature(Float.parseFloat(averageValue));
+				result.setMaxValueTemperature(Float.parseFloat(maxValue));
+				result.setMinValueTemperature(Float.parseFloat(minValue));
+			}else if(name.equalsIgnoreCase(NAME_TEMPERATURE_FULLNAME)){
 				result.setAverageValueTemperature(Float.parseFloat(averageValue));
 				result.setMaxValueTemperature(Float.parseFloat(maxValue));
 				result.setMinValueTemperature(Float.parseFloat(minValue));
