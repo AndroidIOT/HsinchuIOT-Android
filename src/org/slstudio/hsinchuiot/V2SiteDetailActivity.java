@@ -614,7 +614,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 		WindowManager m = getWindowManager();
 		Display d = m.getDefaultDisplay(); // 获取屏幕宽、高用
 		WindowManager.LayoutParams p = dlg.getWindow().getAttributes(); // 获取对话框当前的参数值
-		p.height = (int) (d.getHeight() * 0.8); // 高度设置为屏幕的0.6
+		p.height = (int) (d.getHeight() * 0.9); // 高度设置为屏幕的0.6
 		p.width = (int) (d.getWidth() * 0.65); // 宽度设置为屏幕的0.95
 		dialogWindow.setAttributes(p);
 		dlg.setCancelable(false);
@@ -1137,17 +1137,17 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 		chartRenderer.setApplyBackgroundColor(true);// 设置是否显示背景色
 		chartRenderer.setBackgroundColor(resources.getColor(R.color.white));// 设置背景色
-		chartRenderer.setMargins(new int[] { 20, 60, 35, 30 });// 设置图表的外边框(上/左/下/右)
+		chartRenderer.setMargins(new int[] { 20, 100, 35, 30 });// 设置图表的外边框(上/左/下/右)
 		chartRenderer.setMarginsColor(resources.getColor(R.color.white));
 
 		chartRenderer.setChartTitleTextSize(0);// ?设置整个图表标题文字大小
 
 		chartRenderer.setAxesColor(resources.getColor(R.color.dark_gray));
-		chartRenderer.setAxisTitleTextSize(16); // 设置轴标题文字的大小
+		chartRenderer.setAxisTitleTextSize(20); // 设置轴标题文字的大小
 		chartRenderer.setLabelsColor(resources.getColor(R.color.dark_gray));
 
-		chartRenderer.setLabelsTextSize(15);// 设置刻度显示文字的大小(XY轴都会被设置)
-		chartRenderer.setLegendTextSize(18);// 图例文字大小
+		chartRenderer.setLabelsTextSize(25);// 设置刻度显示文字的大小(XY轴都会被设置)
+		chartRenderer.setLegendTextSize(30);// 图例文字大小
 		chartRenderer.setFitLegend(true);
 		chartRenderer.setTextTypeface("sans_serif", Typeface.BOLD);
 
@@ -1185,7 +1185,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 		co2Renderer.setColor(resources.getColor(R.color.chart_color_co2));
 		co2Renderer.setLineWidth(3);
 		co2Renderer.setDisplayChartValues(true);
-		co2Renderer.setChartValuesTextSize(15);
+		co2Renderer.setChartValuesTextSize(25);
 
 		temperatureSeries = new XYSeries(resources.getString(R.string.temperature), 1);// 定义XYSeries
 		chartDataset.addSeries(temperatureSeries);// 在XYMultipleSeriesDataset中添加XYSeries
@@ -1197,7 +1197,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 		temperatureRenderer.setLineWidth(3);
 
 		temperatureRenderer.setDisplayChartValues(true);
-		temperatureRenderer.setChartValuesTextSize(15);
+		temperatureRenderer.setChartValuesTextSize(25);
 
 		humiditySeries = new XYSeries(resources.getString(R.string.humidity), 2);// 定义XYSeries
 		chartDataset.addSeries(humiditySeries);// 在XYMultipleSeriesDataset中添加XYSeries
@@ -1209,7 +1209,7 @@ public class V2SiteDetailActivity extends BaseActivity {
 		humidityRenderer.setColor(resources.getColor(R.color.chart_color_humidity));
 		humidityRenderer.setLineWidth(3);
 		humidityRenderer.setDisplayChartValues(true);
-		humidityRenderer.setChartValuesTextSize(15);
+		humidityRenderer.setChartValuesTextSize(25);
 
 		// FillOutsideLine fill2 = new
 		// FillOutsideLine(FillOutsideLine.Type.BOUNDS_ALL);

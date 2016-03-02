@@ -1,6 +1,8 @@
 package org.slstudio.hsinchuiot.service.http;
 
 import org.slstudio.hsinchuiot.AppConfig;
+import org.slstudio.hsinchuiot.Constants.PreferenceKey;
+import org.slstudio.hsinchuiot.service.ServiceContainer;
 
 public abstract class HttpConfig {
 
@@ -39,6 +41,7 @@ public abstract class HttpConfig {
 			if(AppConfig.TESTING){
 				hostName = "http://60.30.32.20";
 			}
+			
 			return hostName;
 			
 		}

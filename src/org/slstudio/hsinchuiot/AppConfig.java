@@ -10,7 +10,7 @@ public class AppConfig {
 	public static final int MAX_HTTP_THREADS = 5;
 
 	public static final boolean DEBUG = true;
-	public static final String PREF_NAME = "HSINCHUIOT-";
+	public static final String PREF_NAME = "HSINCHUIOT";
 	
 	public static final boolean TESTING = false;
 	

@@ -82,6 +82,8 @@ public class Constants {
 		public static final String DEVICE_UUID = "DEVICE_UUID";
 		
 		public static final String ALARM_LIST = "ALARM_LIST";
+		
+		public static final String SERVER_URL = "SERVER_URL";
 	}
 
 	public static final class Expression {
