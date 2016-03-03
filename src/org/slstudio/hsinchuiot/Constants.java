@@ -90,6 +90,7 @@ public class Constants {
 	
 	public static class ConfigurationKey{
 		public static final String SERVER_URL = "SERVER_URL";	
+		public static final String FIX_FLAG = "FIX_FLAG";
 	}
 
 	public static final class Expression {

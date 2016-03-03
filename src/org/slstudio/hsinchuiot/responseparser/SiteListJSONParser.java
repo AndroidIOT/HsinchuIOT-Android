@@ -6,12 +6,14 @@ import java.io.InputStreamReader;
 
 import org.slstudio.hsinchuiot.AppConfig;
 import org.slstudio.hsinchuiot.service.IOTException;
+import org.slstudio.hsinchuiot.service.ServiceContainer;
 import org.slstudio.hsinchuiot.service.http.ResponseParser;
 import org.slstudio.hsinchuiot.util.IOTLog;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.slstudio.hsinchuiot.Constants.ConfigurationKey;
 import org.slstudio.hsinchuiot.model.Device;
 import org.slstudio.hsinchuiot.model.DeviceWithAggregationData;
 import org.slstudio.hsinchuiot.model.IOTMonitorData;
@@ -36,7 +38,16 @@ public class SiteListJSONParser implements ResponseParser{
 			IOTLog.i("HTTP Result", node.toString());
 			
 			String symbol = "$";
-			if(AppConfig.TESTING){
+			
+			boolean bFix = false;
+			String fixFlag = ServiceContainer.getInstance().getConfigurationService().getConfig(ConfigurationKey.FIX_FLAG);
+			if(fixFlag == null || fixFlag.equals("")){
+				ServiceContainer.getInstance().getConfigurationService().saveConfig(ConfigurationKey.FIX_FLAG, "0");
+			}else if(fixFlag.equalsIgnoreCase("true")||fixFlag.equalsIgnoreCase("1")){
+				bFix = true;
+			}
+			
+			if(bFix){
 				symbol = "@";
 			}
 			
