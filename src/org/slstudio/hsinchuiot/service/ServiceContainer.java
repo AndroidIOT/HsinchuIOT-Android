@@ -13,6 +13,7 @@ public class ServiceContainer {
 	private static ServiceContainer INSTANCE;
 	private HttpRequestHandler httpHandler;
 	private PerferenceService appStateService;
+	private ConfigurationService configurationService;
 	private SessionService sessionService;
 	private DeviceUUIDService uuidService;
 	private GCMPushService pushService;
@@ -50,6 +51,13 @@ public class ServiceContainer {
 		this.version = version;
 	}
 
+	public ConfigurationService getConfigurationService(){
+		if(configurationService == null){
+			configurationService = new ConfigurationService();
+		}
+		return configurationService;
+	}
+	
 	public PerferenceService getPerferenceService() {
 		if (appStateService == null) {
 			appStateService = new PerferenceService(context);

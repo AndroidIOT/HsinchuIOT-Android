@@ -28,6 +28,9 @@ public class Constants {
 	public static final String LOG_FILE_PATH = Environment
 			.getExternalStorageDirectory().getAbsolutePath() + "/hsinchuIOT/logs/";
 	
+	public static final String CONFIG_FILE_PATH = Environment
+			.getExternalStorageDirectory().getAbsolutePath() + "/hsinchuIOT/";
+	
 	public static class BundleKey {
 
 		public static final String UPGRAGE_TYPE = "UPGRAGE_TYPE";
@@ -83,7 +86,10 @@ public class Constants {
 		
 		public static final String ALARM_LIST = "ALARM_LIST";
 		
-		public static final String SERVER_URL = "SERVER_URL";
+	}
+	
+	public static class ConfigurationKey{
+		public static final String SERVER_URL = "SERVER_URL";	
 	}
 
 	public static final class Expression {

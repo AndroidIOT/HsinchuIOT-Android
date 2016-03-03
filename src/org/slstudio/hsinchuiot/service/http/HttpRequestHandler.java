@@ -32,6 +32,7 @@ import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.protocol.HTTP;
 import org.slstudio.hsinchuiot.AppConfig;
+import org.slstudio.hsinchuiot.Constants.ConfigurationKey;
 import org.slstudio.hsinchuiot.Constants.PreferenceKey;
 import org.slstudio.hsinchuiot.service.IOTException;
 import org.slstudio.hsinchuiot.service.ServiceContainer;
@@ -76,7 +77,7 @@ public class HttpRequestHandler {
 			config = hr.getConfig();
 			
 			boolean useHTTPS = false;
-			String serverURL = ServiceContainer.getInstance().getPerferenceService().getValue(PreferenceKey.SERVER_URL);
+			String serverURL = ServiceContainer.getInstance().getConfigurationService().getConfig(ConfigurationKey.SERVER_URL);
 			if(serverURL == null || serverURL.equals("")){
 				if (config.getHostName().startsWith("https")) {
 					useHTTPS = true;
@@ -104,10 +105,10 @@ public class HttpRequestHandler {
 			Exception fe = null;
 			InputStream is = null;
 			try {
-				String serverURL = ServiceContainer.getInstance().getPerferenceService().getValue(PreferenceKey.SERVER_URL);
+				String serverURL = ServiceContainer.getInstance().getConfigurationService().getConfig(ConfigurationKey.SERVER_URL);
 				if(serverURL == null || serverURL.equals("")){
 					serverURL = config.getHostName() + ":" + config.getHostPort()+ "/";
-					ServiceContainer.getInstance().getPerferenceService().setValue(PreferenceKey.SERVER_URL, serverURL);
+					ServiceContainer.getInstance().getConfigurationService().saveConfig(ConfigurationKey.SERVER_URL, serverURL);
 				}
 				if(!serverURL.endsWith("/")){
 					serverURL += "/" ;

@@ -185,9 +185,9 @@ public class User implements Serializable {
 	}
 
 	public boolean isAdminUser(){
-		if(AppConfig.TESTING) return true;
-		
-		return PERMISSION_ADMINUSER.equals(permission);
+		//if(AppConfig.TESTING) return true;
+		return true;
+		//return PERMISSION_ADMINUSER.equals(permission);
 	}
 	
 	public boolean isNormalUser(){
