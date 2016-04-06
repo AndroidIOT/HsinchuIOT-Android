@@ -113,7 +113,6 @@ public class V2AlarmActivity extends BaseActivity {
 				
 				Device fakeDevice = new Device();
 				fakeDevice.setDeviceID(alarm.getDeviceID());
-				
 				Site fakeSite = new Site();
 				fakeSite.setDevice(fakeDevice);
 				fakeSite.setSiteName(alarm.getAlarmSite());
@@ -134,7 +133,7 @@ public class V2AlarmActivity extends BaseActivity {
 				to.setTime(alarmTime);
 				to.add(Calendar.MINUTE, 5);
 				
-				
+				IOTLog.f("V2AlarmActivity", "Start site detail activity for alarm:" + alarm.toString());
 				
 				Intent intent = new Intent(Constants.Action.HSINCHUIOT_SITEDETAIL);
 				
@@ -174,11 +173,11 @@ public class V2AlarmActivity extends BaseActivity {
 
 				StringTokenizer st2 = new StringTokenizer(alarmString, ";");
 				String time = st2.nextToken();
-				String deviceID = st2.nextToken();
 				String siteName = st2.nextToken();
 				String alarmValueType = st2.nextToken();
 				String alarmValue = st2.nextToken();
 				String alarmType = st2.nextToken();
+				String deviceID = st2.nextToken();
 
 				Alarm alarm = new Alarm(time, deviceID, siteName,
 						alarmValueType, alarmValue, alarmType);
@@ -204,12 +203,12 @@ public class V2AlarmActivity extends BaseActivity {
 
 			StringTokenizer st2 = new StringTokenizer(alarmString, ";");
 			String time = st2.nextToken();
-			String deviceID = st2.nextToken();
 			String siteName = st2.nextToken();
 			String alarmValueType = st2.nextToken();
 			String alarmValue = st2.nextToken();
 			String alarmType = st2.nextToken();
-
+			String deviceID = st2.nextToken();
+			
 			if(currentSite!= null && (!currentSite.getSiteName().equals(siteName))){
 				if(!leftAlarmListString.equals("")){
 					leftAlarmListString += "|";

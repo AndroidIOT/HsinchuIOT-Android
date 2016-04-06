@@ -116,6 +116,11 @@ public class V2SiteDetailActivity extends BaseActivity {
 					}
 				}
 				break;
+			case Constants.MessageKey.V2_MESSAGE_RESPONSE_ERROR:
+				IOTLog.d("Handler","debuginfo(CHART_DATA) - handleMessage: receive msg V2_MESSAGE_RESPONSE_ERROR");
+				if (currentSite != null && !isPaused) {
+					showErrorMsg((Exception)msg.obj);
+				}
 			}
 			super.handleMessage(msg);
 
@@ -1121,6 +1126,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 		dlg.show();
 	}
+	
+	private void showErrorMsg(Exception exp){
+		
+		setException(exp);
+		showDialog(DIALOG_ERROR);
+		updateChartDataFinished();
+	}
 
 	private void setChartTimePeriod(int period) {
 		chartStartTime = getStartTime(period);
@@ -1982,8 +1994,12 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 		@Override
 		public void onRequestError(Exception e) {
-			// TODO Auto-generated method stub
-
+			if (currentSite != null && currentSite.getDevice().getDeviceID().equals(deviceID)) {
+				Message msg = new Message();
+				msg.what = Constants.MessageKey.V2_MESSAGE_RESPONSE_ERROR;
+				msg.obj = e;
+				handler.sendMessage(msg);
+			}
 		}
 
 		@Override
@@ -2060,8 +2076,12 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 		@Override
 		public void onRequestError(Exception e) {
-			// TODO Auto-generated method stub
-
+			if (currentSite != null && currentSite.getDevice().getDeviceID().equals(deviceID)) {
+				Message msg = new Message();
+				msg.what = Constants.MessageKey.V2_MESSAGE_RESPONSE_ERROR;
+				msg.obj = e;
+				handler.sendMessage(msg);
+			}
 		}
 
 		@Override
@@ -2120,7 +2140,12 @@ public class V2SiteDetailActivity extends BaseActivity {
 		@Override
 		public void onRequestError(Exception e) {
 			// TODO Auto-generated method stub
-
+			if (currentSite != null && currentSite.getDevice().getDeviceID().equals(deviceID)) {
+				Message msg = new Message();
+				msg.what = Constants.MessageKey.V2_MESSAGE_RESPONSE_ERROR;
+				msg.obj = e;
+				handler.sendMessage(msg);
+			}
 		}
 
 		@Override

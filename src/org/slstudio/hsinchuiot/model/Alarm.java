@@ -103,8 +103,8 @@ public class Alarm {
 	
 	@Override
 	public String toString(){
-		return alarmTime + ";" + deviceID + ";" + alarmSite + ";" + alarmValueType 
-				+ ";" + alarmValue + ";" + alarmType;
+		return alarmTime + ";" + alarmSite + ";" + alarmValueType 
+				+ ";" + alarmValue + ";" + alarmType + ";"+ deviceID;
 	}
 
 }

@@ -39,7 +39,7 @@ public abstract class XmlResponseParser<T> implements ResponseParser {
 			String xmlStr = bos.toString();
 			
 			IOTLog.d("XML Parser", xmlStr);
-			
+			IOTLog.f("XmlResponseParser", "get http response(xml):" + xmlStr);
 			NodeList errorNodeList = doc.getElementsByTagName("NBIError");
 			if(errorNodeList!=null && errorNodeList.getLength()>0){
 				Element errorNode = (Element)errorNodeList.item(0);

@@ -47,6 +47,7 @@ public class Constants {
 		public static final int MESSAGE_UPDATE_MONITOR_DATA = 4;
 		public static final int V2_MESSAGE_UPDATE_TIME = 5;
 		public static final int V2_MESSAGE_UPDATE_ALARM = 6;
+		public static final int V2_MESSAGE_RESPONSE_ERROR = 7;
 	}
 
 	public static class SessionKey{

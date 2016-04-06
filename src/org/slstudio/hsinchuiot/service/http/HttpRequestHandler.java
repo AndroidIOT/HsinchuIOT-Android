@@ -115,8 +115,13 @@ public class HttpRequestHandler {
 				}
 				String url = serverURL + request.getRequestURI();
 				IOTLog.i("HTTPRequest", url);
+				IOTLog.f("HttpRequestHandler", "send http request:" + url);
 				List<NameValuePair> pairParameters = request
 						.getPairParameters();
+				for (NameValuePair param: pairParameters){
+					IOTLog.f("HttpRequestHandler", "parameter, name:" + param.getName() + ",value:" + param.getValue());
+				}
+				
 				Method method = config.getMethod();
 				HttpUriRequest uriRequest = null;
 
@@ -171,6 +176,7 @@ public class HttpRequestHandler {
 			} finally {
 				if (fe != null) {
 					IOTLog.e("ReqeustProcessor.run(): Exception", fe.toString());
+					IOTLog.f("HttpRequestHandler", "http request exception:" + fe.toString());
 					listener.onRequestError(fe);
 				}
 				listener.onRequestComplete();

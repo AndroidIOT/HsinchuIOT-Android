@@ -117,16 +117,16 @@ public class V2SplashActivity extends BaseActivity {
 		if(AppConfig.TESTING){
 			String alarmList = ServiceContainer.getInstance().getPerferenceService().getValue(Constants.PreferenceKey.ALARM_LIST);
 			if(alarmList == null|| alarmList.equals("")){
-				String mockAlarmString = "2015-11-09 18:03:30;73;湖口鄉立圖書館;二氧化碳;1020ppm;超標"
-						+ "|2015-11-09 18:09:30;73;M2M;二氧化碳;1020ppm;超標"
-						+ "|2015-11-21 18:39:30;73;3G移动;二氧化碳;1020ppm;接近超標"
-						+ "|2015-11-11 18:09:30;73;M2M;二氧化碳;1020ppm;接近超標";
+				String mockAlarmString = "2015-11-09 18:03:30;湖口鄉立圖書館;二氧化碳;1020ppm;超標;73"
+						+ "|2015-11-09 18:09:30;M2M;二氧化碳;1020ppm;超標;73"
+						+ "|2015-11-21 18:39:30;3G移动;二氧化碳;1020ppm;接近超標;73"
+						+ "|2015-11-11 18:09:30;M2M;二氧化碳;1020ppm;接近超標;73";
 				ServiceContainer.getInstance().getPerferenceService().setValue(Constants.PreferenceKey.ALARM_LIST, mockAlarmString);
 			}
 			
-			AlarmHelper.sendAlarmNotification(this, new Alarm("2015-11-11 18:09:30;73;M2M;二氧化碳;1020ppm;接近超標"));
+			AlarmHelper.sendAlarmNotification(this, new Alarm("2015-11-11 18:09:30;M2M;二氧化碳;1020ppm;接近超標;73"));
 			
-			AlarmHelper.sendAlarmNotification(this, new Alarm("2015-11-12 18:09:30;73;M2M;二氧化碳;1020ppm;超標"));
+			AlarmHelper.sendAlarmNotification(this, new Alarm("2015-11-12 18:09:30;M2M;二氧化碳;1020ppm;超標;73"));
 			
 		}
 		
