@@ -82,8 +82,8 @@
     <string name="superuser_listheader_co2">二氧化碳(ppm)</string>
     <string name="superuser_listheader_temperature">溫度(℃)</string>
     <string name="superuser_listheader_humidity">濕度(%)</string>
-    <string name="chart_interval_current">當前</string>
-    <string name="chart_interval_by15seconds">實時</string>
+    <string name="chart_interval_current">即時</string>
+    <string name="chart_interval_by15seconds">15秒</string>
     <string name="chart_interval_byquarter">刻</string>
     <string name="chart_interval_byhour">小時</string>
     <string name="chart_interval_by8hours">8小時</string>
@@ -117,7 +117,7 @@
     <string name="label_temperature">溫度:</string>
     <string name="label_humidity">濕度:</string>
     <string name="dlg_title_systemprompt">系統提示</string>
-    <string name="dlg_caption_deletealarm">妳確定要刪除該告警信息嗎？</string>
-    <string name="dlg_caption_deleteallalarms">妳確定要刪除全部告警信息嗎？</string>
-    <string name="dlg_caption_exit">妳確定要要退出嗎？</string>
+    <string name="dlg_caption_deletealarm">您確定要刪除該告警信息嗎？</string>
+    <string name="dlg_caption_deleteallalarms">您確定要刪除全部告警信息嗎？</string>
+    <string name="dlg_caption_exit">您確定要要退出嗎？</string>
 </resources>

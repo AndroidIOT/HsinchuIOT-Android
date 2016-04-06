@@ -25,6 +25,7 @@
 		<RadioButton
             android:id="@+id/interval_btn_byquarter"
             style="@style/radio_button_middle"
+            android:visibility="gone"
             android:text="@string/chart_interval_byquarter" />
         <RadioButton
             android:id="@+id/interval_btn_byhour"

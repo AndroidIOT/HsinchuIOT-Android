@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
+import org.slstudio.hsinchuiot.Constants.ConfigurationKey;
 import org.slstudio.hsinchuiot.fragment.V2UserSiteHomePageFragment;
 import org.slstudio.hsinchuiot.model.Device;
 import org.slstudio.hsinchuiot.model.IOTMonitorData;
@@ -511,6 +512,12 @@ public class V2UserMainActivity extends BaseActivity {
 					.getSessionValue(
 							Constants.SessionKey.REALTIME_DATA_MONITOR_REFRESH_TIME,
 							10);
+			String refreshStr = ServiceContainer.getInstance().getConfigurationService().getConfig(ConfigurationKey.REALTIME_DATA_REFRESH_INTERVAL);
+			if(refreshStr == null || refreshStr.equals("")){
+				ServiceContainer.getInstance().getConfigurationService().saveConfig(ConfigurationKey.REALTIME_DATA_REFRESH_INTERVAL, Integer.toString(refreshTime));
+			}else{
+				refreshTime = new Integer(refreshStr);
+			}
 
 			IOTLog.d(
 					"GetRealtimeDataListener",

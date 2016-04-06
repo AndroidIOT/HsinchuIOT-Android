@@ -91,6 +91,8 @@ public class Constants {
 	public static class ConfigurationKey{
 		public static final String SERVER_URL = "SERVER_URL";	
 		public static final String FIX_FLAG = "FIX_FLAG";
+		public static final String REALTIME_DATA_REFRESH_INTERVAL = "REALTIME_DATA_REFRESH_INTERVAL";
+		public static final String REALTIME_CHART_REFRESH_INTERVAL = "REALTIME_CHART_REFRESH_INTERVAL";
 	}
 
 	public static final class Expression {

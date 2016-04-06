@@ -25,7 +25,7 @@
     <string name="superuser_listheader_temperature">Temperature(℃)</string>
     <string name="superuser_listheader_humidity">Humidity(%)</string>
     <string name="chart_interval_current">Current</string>
-    <string name="chart_interval_by15seconds">Realtime</string>
+    <string name="chart_interval_by15seconds">15sec</string>
     <string name="chart_interval_byquarter">Quarter</string>
     <string name="chart_interval_byhour">Hour</string>
     <string name="chart_interval_by8hours">8 Hours</string>

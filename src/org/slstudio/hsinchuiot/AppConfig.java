@@ -4,7 +4,7 @@ public class AppConfig {
 	public static boolean LOG_NETWORK_STATUS = true;
 	public static String HTTP_SCHEME = "http://";
 	public static String HTTPS_SCHEME = "https://";
-	public static String HTTP_DOMAIN = "hsinchu.enable.mobi";
+	public static String HTTP_DOMAIN = "ypu.enable.mobi";
 	public static int HTTP_PORT = 80;
 
 	public static final int MAX_HTTP_THREADS = 5;

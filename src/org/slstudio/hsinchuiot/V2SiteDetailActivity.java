@@ -17,6 +17,7 @@ import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
+import org.slstudio.hsinchuiot.Constants.ConfigurationKey;
 import org.slstudio.hsinchuiot.model.IOTMonitorData;
 import org.slstudio.hsinchuiot.model.IOTSampleData;
 import org.slstudio.hsinchuiot.model.Site;
@@ -1998,6 +1999,13 @@ public class V2SiteDetailActivity extends BaseActivity {
 
 			int refreshTime = (Integer) ServiceContainer.getInstance().getSessionService()
 					.getSessionValue(Constants.SessionKey.REALTIME_DATA_MONITOR_REFRESH_TIME, 30);
+			String refreshStr = ServiceContainer.getInstance().getConfigurationService().getConfig(ConfigurationKey.REALTIME_CHART_REFRESH_INTERVAL);
+			if(refreshStr == null || refreshStr.equals("")){
+				ServiceContainer.getInstance().getConfigurationService().saveConfig(ConfigurationKey.REALTIME_CHART_REFRESH_INTERVAL, Integer.toString(refreshTime));
+			}else{
+				refreshTime = new Integer(refreshStr);
+			}
+			
 			IOTLog.d("GetRealtimeChartDataListener",
 					"debuginfo(CHART_DATA) - onRequestComplete: send message MESSAGE_GET_CHART_DATA for " + deviceID
 							+ " with deplay time:" + refreshTime + "s");
