@@ -17,11 +17,12 @@ public class Alarm {
 	public Alarm(String alarmString){
 		StringTokenizer st = new StringTokenizer(alarmString, ";");
 		String time = st.nextToken();
-		String deviceID = st.nextToken();
 		String siteName = st.nextToken();
 		String alarmValueType = st.nextToken();
 		String alarmValue = st.nextToken();
 		String alarmType = st.nextToken();
+		String deviceID = st.nextToken();
+		
 		
 		this.alarmTime = time;
 		this.deviceID = deviceID;
