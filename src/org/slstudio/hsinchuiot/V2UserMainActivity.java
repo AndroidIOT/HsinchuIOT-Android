@@ -238,6 +238,9 @@ public class V2UserMainActivity extends BaseActivity {
 
 										@Override
 										public void run() {
+											ServiceContainer.getInstance().getSessionService().setLoginUser(null);
+											ServiceContainer.getInstance().getSessionService().setSessionID(null);
+											
 											finish();
 										}
 									}, 1000);

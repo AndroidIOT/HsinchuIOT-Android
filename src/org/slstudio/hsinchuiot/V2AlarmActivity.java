@@ -10,6 +10,9 @@ import java.util.StringTokenizer;
 import org.slstudio.hsinchuiot.model.Alarm;
 import org.slstudio.hsinchuiot.model.Device;
 import org.slstudio.hsinchuiot.model.Site;
+import org.slstudio.hsinchuiot.model.User;
+import org.slstudio.hsinchuiot.service.IOTException;
+import org.slstudio.hsinchuiot.service.LoginService;
 import org.slstudio.hsinchuiot.service.ServiceContainer;
 import org.slstudio.hsinchuiot.ui.adapter.V2AlarmListViewAdapter;
 import org.slstudio.hsinchuiot.util.IOTLog;
@@ -18,6 +21,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -43,8 +47,27 @@ public class V2AlarmActivity extends BaseActivity {
 
 		setContentView(R.layout.v2_activity_alarm);
 		initViews();
+		
+		new Handler().post(new Runnable() {
 
+			@Override
+			public void run() {
+				// start new thread for handle the login
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						checkLogin();
+						// showDebugActivity(Constants.Action.HSINCHUIOT_USER_CHART_SETTINGS);
+					}
+
+				}).start();
+
+			}
+
+		});
 	}
+	
 	
 	public void refreshList() {
 		refreshAlarmList();
@@ -227,5 +250,107 @@ public class V2AlarmActivity extends BaseActivity {
 		lvAdapter.notifyDataSetChanged();
 	}
 
+	
+	private void checkLogin() {
+		
+		if (ServiceContainer.getInstance()
+				.getSessionService().getLoginUser() != null) {
+			String sessionID = ServiceContainer.getInstance().getSessionService().getSessionID();
+			if (sessionID != null && (!sessionID.equals(""))){
+				//user already login, then skip login process
+				return;
+			}
+		} 
+		
+		//user not login, do check remember user and relogin if needed
+		String loginName = ServiceContainer
+				.getInstance()
+				.getPerferenceService()
+				.getValue(
+						Constants.PreferenceKey.LOGINNAME);
+		String password = ServiceContainer
+				.getInstance()
+				.getPerferenceService()
+				.getValue(
+						Constants.PreferenceKey.PASSWORD);
+
+		if (loginName.equals("") || password.equals("")) {
+			showLoginActivity();
+		} else {
+			try {
+				if (LoginService.getInstance().login(loginName, password)) {
+					ServiceContainer
+							.getInstance()
+							.getSessionService()
+							.setSessionValue(
+									Constants.SessionKey.THRESHOLD_WARNING,
+									LoginService.getWarningThreshold(this));
+					ServiceContainer
+							.getInstance()
+							.getSessionService()
+							.setSessionValue(
+									Constants.SessionKey.THRESHOLD_BREACH,
+									LoginService.getBreachThreshold(this));
+					User loginUser = ServiceContainer.getInstance()
+							.getSessionService().getLoginUser();
+
+					if (loginUser == null) {
+						showLoginActivity();
+					} else {
+						if (loginUser.isAdminUser()) {
+							//handle gcm register
+							try{
+								ServiceContainer.getInstance().getPushService().registerGSM();
+							}catch(IOTException exp){
+								
+							}
+							
+							
+						} else if (loginUser.isNormalUser()) {
+							
+							//handle gcm register
+							try{
+								ServiceContainer.getInstance().getPushService().registerGSM();
+							}catch(IOTException exp){
+								
+							}
+							int refreshTime = 30;
+							String refreshTimeStr = ServiceContainer
+									.getInstance()
+									.getPerferenceService()
+									.getValue(
+											Constants.PreferenceKey.REALTIME_DATA_MONITOR_REFRESH_TIME);
+							if (!"".equals(refreshTimeStr)) {
+								refreshTime = Integer.parseInt(refreshTimeStr);
+							}
+
+							ServiceContainer
+									.getInstance()
+									.getSessionService()
+									.setSessionValue(
+											Constants.SessionKey.REALTIME_DATA_MONITOR_REFRESH_TIME,
+											refreshTime);
+						} else {
+							showLoginActivity();
+						}
+					}
+				} else {
+					showLoginActivity();
+				}
+			} catch (IOTException e) {
+				showLoginActivity();
+			}
+
+		}
+	}
+	
+	private void showLoginActivity() {
+		Intent i = new Intent(Constants.Action.HSINCHUIOT_LOGIN);
+		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(i);
+		finish();
+
+	}
 	
 }

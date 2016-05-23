@@ -105,7 +105,6 @@ public class SiteListJSONParser implements ResponseParser{
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			IOTLog.d("HttpRequestHandle", e.getMessage());
 			if (e instanceof IOTException) {
 				throw (IOTException) e;
 			} else {
